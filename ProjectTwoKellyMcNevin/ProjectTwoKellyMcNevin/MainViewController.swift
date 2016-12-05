@@ -13,6 +13,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var dataTableView: UITableView!
     
+    var selectedCell: DataTableViewCell?
+    var selectedListIndex: Int?
+    
     var articles = [Article]()
     
     override func viewDidLoad() {
@@ -47,6 +50,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! DataTableViewCell
+        
+        if cell === selectedCell {
+            cell.backgroundColor = UIColor.white
+            selectedCell = nil
+        }
+        else {
+            cell.backgroundColor = UIColor.lightGray
+            selectedCell?.backgroundColor = UIColor.white
+            selectedCell = cell
+        }
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
