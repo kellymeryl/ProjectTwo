@@ -66,6 +66,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DetailedViewController = segue.destination as! DetailedViewController
+        DetailedViewController.selectedIndex = dataTableView.indexPathForSelectedRow?.row
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
