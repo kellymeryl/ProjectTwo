@@ -10,6 +10,9 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var dataTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

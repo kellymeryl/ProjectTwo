@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-630" y="152"/>
         </scene>
-        <!--View Controller-->
+        <!--MainViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -42,7 +42,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="94" id="r5C-6z-11S">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DataTableViewCell" rowHeight="94" id="r5C-6z-11S" customClass="DataTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r5C-6z-11S" id="MHn-VM-0L1">
@@ -69,8 +69,17 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="articleDescriptionLabel" destination="XlG-Qs-jZv" id="HnZ-Tp-2WB"/>
+                                            <outlet property="articleImageView" destination="b2g-i0-G5p" id="QHv-Il-9gt"/>
+                                            <outlet property="articleTitleLabel" destination="5Jy-Oe-ETH" id="QPY-lR-sdM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Hhu-Zp-kUL"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2Tf-Fs-8N2"/>
+                                </connections>
                             </tableView>
                         </subviews>
                     </view>
@@ -90,6 +99,9 @@
                             </subviews>
                         </view>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dataTableView" destination="eKy-cd-we4" id="JT5-9x-vIe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

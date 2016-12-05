@@ -9,7 +9,11 @@
 import UIKit
 
 class DataTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var articleTitleLabel: UILabel!
+    @IBOutlet weak var articleDescriptionLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

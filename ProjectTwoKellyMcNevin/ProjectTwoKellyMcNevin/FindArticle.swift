@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+class WallStreetJournalAPIClient{
+    
+    func getData(completion: @escaping () -> ()) {
+        
+    }
+    
+    func getArticles(_ json: [String: Any]) -> [] {
+        
+    }
+}
