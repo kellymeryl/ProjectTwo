@@ -15,6 +15,7 @@
 		EBBEE7AC1DF62856009CB3EF /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */; };
 		EBBEE7AE1DF62911009CB3EF /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7AD1DF62911009CB3EF /* DataModel.swift */; };
 		EBBEE7B01DF6291C009CB3EF /* FindArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */; };
+		EBBEE7B21DF62D8B009CB3EF /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7B11DF62D8B009CB3EF /* DetailedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		EBBEE7AD1DF62911009CB3EF /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindArticle.swift; sourceTree = "<group>"; };
+		EBBEE7B11DF62D8B009CB3EF /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */,
 				EBBEE7AD1DF62911009CB3EF /* DataModel.swift */,
 				EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */,
+				EBBEE7B11DF62D8B009CB3EF /* DetailedViewController.swift */,
 			);
 			path = ProjectTwoKellyMcNevin;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			files = (
 				EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */,
 				EBBEE7AE1DF62911009CB3EF /* DataModel.swift in Sources */,
+				EBBEE7B21DF62D8B009CB3EF /* DetailedViewController.swift in Sources */,
 				EBBEE7AC1DF62856009CB3EF /* DataTableViewCell.swift in Sources */,
 				EBA0B9E91DF6237500F69C4A /* MainViewController.swift in Sources */,
 				EBBEE7B01DF6291C009CB3EF /* FindArticle.swift in Sources */,

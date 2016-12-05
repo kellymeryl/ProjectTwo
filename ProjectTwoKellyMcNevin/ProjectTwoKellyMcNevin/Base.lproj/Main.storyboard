@@ -73,6 +73,7 @@
                                             <outlet property="articleDescriptionLabel" destination="XlG-Qs-jZv" id="HnZ-Tp-2WB"/>
                                             <outlet property="articleImageView" destination="b2g-i0-G5p" id="QHv-Il-9gt"/>
                                             <outlet property="articleTitleLabel" destination="5Jy-Oe-ETH" id="QPY-lR-sdM"/>
+                                            <segue destination="5L5-zF-3jC" kind="show" id="TrG-64-BUQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -92,7 +93,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wall Street Journal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDq-H2-Nro">
                                     <rect key="frame" x="-90" y="0.0" width="329" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -106,6 +107,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="120.8" y="151.57421289355324"/>
+        </scene>
+        <!--DetailedViewController-->
+        <scene sceneID="G5t-b7-Uu2">
+            <objects>
+                <viewController title="DetailedViewController" id="5L5-zF-3jC" customClass="DetailedViewController" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nQe-uo-iQK"/>
+                        <viewControllerLayoutGuide type="bottom" id="bcA-fZ-291"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GUI-Wp-a1W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocd-1E-8b9">
+                                <rect key="frame" x="8" y="72" width="351" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WRK-Vu-iPc">
+                                <rect key="frame" x="8" y="268" width="351" height="379"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                    </view>
+                    <navigationItem key="navigationItem" id="ydE-Ht-qpS">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="Cwa-tB-q00">
+                            <rect key="frame" x="41" y="6" width="294" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FwC-ph-srL">
+                                    <rect key="frame" x="0.0" y="1" width="294" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="WRK-Vu-iPc" id="3Y9-aY-a73"/>
+                        <outlet property="imageDisplay" destination="ocd-1E-8b9" id="GDO-Ry-oBD"/>
+                        <outlet property="titleTextField" destination="FwC-ph-srL" id="kok-yV-IQc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ith-p3-BXs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844" y="151.57421289355324"/>
         </scene>
     </scenes>
 </document>
