@@ -139,21 +139,20 @@
                             <rect key="frame" x="41" y="6" width="294" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FwC-ph-srL">
-                                    <rect key="frame" x="0.0" y="1" width="294" height="30"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RF-uM-8Ul">
+                                    <rect key="frame" x="19" y="0.0" width="267" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                         </view>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="WRK-Vu-iPc" id="3Y9-aY-a73"/>
                         <outlet property="imageDisplay" destination="ocd-1E-8b9" id="GDO-Ry-oBD"/>
-                        <outlet property="titleTextField" destination="FwC-ph-srL" id="kok-yV-IQc"/>
+                        <outlet property="titleLabel" destination="2RF-uM-8Ul" id="9HX-yG-3R0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ith-p3-BXs" userLabel="First Responder" sceneMemberID="firstResponder"/>

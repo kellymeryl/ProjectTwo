@@ -10,9 +10,9 @@ import UIKit
 
 class DetailedViewController: UIViewController {
     
-    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var imageDisplay: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
