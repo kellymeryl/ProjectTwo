@@ -60,17 +60,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlG-Qs-jZv">
-                                                    <rect key="frame" x="102" y="65" width="265" height="29"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7ph-W5-rkf">
+                                                    <rect key="frame" x="102" y="58" width="265" height="71"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="articleDescriptionLabel" destination="XlG-Qs-jZv" id="HnZ-Tp-2WB"/>
+                                            <outlet property="articleDescriptionTextField" destination="7ph-W5-rkf" id="ahu-aP-1Ve"/>
                                             <outlet property="articleImageView" destination="b2g-i0-G5p" id="QHv-Il-9gt"/>
                                             <outlet property="articleTitleLabel" destination="5Jy-Oe-ETH" id="QPY-lR-sdM"/>
                                         </connections>
@@ -97,8 +97,12 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="pWs-Sf-Fih"/>
                                 </connections>
                             </searchBar>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SEA-6P-LND">
+                                <rect key="frame" x="0.0" y="407" width="375" height="260"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="NTS-u8-KnD">
                         <nil key="title"/>
@@ -114,10 +118,11 @@
                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryPickerView" destination="SEA-6P-LND" id="iwO-e0-XCE"/>
                         <outlet property="dataTableView" destination="eKy-cd-we4" id="JT5-9x-vIe"/>
                     </connections>
                 </viewController>

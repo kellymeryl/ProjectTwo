@@ -13,10 +13,12 @@ var articles = [Article]()
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
+    @IBOutlet weak var categoryPickerView: UIPickerView!
 
     @IBOutlet weak var dataTableView: UITableView!
     
     @IBAction func browseButtonWasTapped(_ sender: Any) {
+        categoryPickerView.isHidden = false
         print("hello")
     }
     
@@ -27,6 +29,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        categoryPickerView.isHidden = true
+
         let client = WallStreetJournalAPIClient()
         
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
@@ -50,7 +54,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "DataTableViewCell", for: indexPath) as! DataTableViewCell
         let article = articles[indexPath.row]
         cell.articleTitleLabel.text = article.title
-        cell.articleDescriptionLabel.text = article.description
+        cell.articleDescriptionTextField.text = article.description
         cell.articleImageViewURL = article.urlToImage
         return cell
 

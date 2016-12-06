@@ -12,7 +12,9 @@ class DataTableViewCell: UITableViewCell {
     
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var articleTitleLabel: UILabel!
-    @IBOutlet weak var articleDescriptionLabel: UILabel!
+  //  @IBOutlet weak var articleDescriptionLabel: UILabel!
+    @IBOutlet weak var articleDescriptionTextField: UITextView!
+    
     
     var articleImageViewURL: String?{
         didSet{
