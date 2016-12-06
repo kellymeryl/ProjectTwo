@@ -13,6 +13,7 @@ var articles = [Article]()
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
+    @IBOutlet weak var categoryPickerView: UIPickerView!
 
     @IBOutlet weak var dataTableView: UITableView!
     

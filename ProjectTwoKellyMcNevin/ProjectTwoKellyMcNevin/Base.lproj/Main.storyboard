@@ -61,9 +61,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlG-Qs-jZv">
-                                                    <rect key="frame" x="102" y="65" width="265" height="63"/>
+                                                    <rect key="frame" x="102" y="65" width="265" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -95,7 +95,16 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="pWs-Sf-Fih"/>
                                 </connections>
                             </searchBar>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wg8-oz-88L">
+                                <rect key="frame" x="0.0" y="392" width="375" height="275"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="l1J-HH-hNF"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2B1-pk-doP"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="NTS-u8-KnD">
                         <nil key="title"/>
@@ -111,9 +120,11 @@
                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </label>
                             </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryPickerView" destination="Wg8-oz-88L" id="Vhz-ji-JRh"/>
                         <outlet property="dataTableView" destination="eKy-cd-we4" id="JT5-9x-vIe"/>
                     </connections>
                 </viewController>
