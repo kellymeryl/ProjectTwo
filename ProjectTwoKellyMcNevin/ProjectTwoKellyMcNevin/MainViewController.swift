@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 var articles = [Article]()
 
@@ -14,7 +15,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
 
     @IBOutlet weak var dataTableView: UITableView!
-    @IBOutlet weak var userInputTextField: UITextField!
     
     
     var selectedCell: DataTableViewCell?
@@ -34,9 +34,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
         }
-       
             client.getData(completion: articleFetchCompletion)
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -51,6 +49,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.articleTitleLabel.text = article.title
         cell.articleDescriptionLabel.text = article.description
         cell.articleImageViewURL = article.urlToImage
+      //  let svc = SafariViewController(url: (string: article.urlToArticle))
+       // navigationController?.pushViewController(SafariViewController, animated: true)
+      //  let destination = SafariViewController() // Your destination
+     //   navigationController?.pushViewController(destination, animated: true)
+   //     UIApplication.shared.openURL(NSURL(string: article.urlToArticle)! as URL)
+   //     UIApplication.shared.openURL(URL (string: article.urlToArticle)!)
+       // self.presentViewController(svc, animated: true, completion: nil)
+        
         return cell
     }
     
@@ -70,12 +76,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let DetailedViewController = segue.destination as! DetailedViewController
-        DetailedViewController.selectedIndex = dataTableView.indexPathForSelectedRow?.row
-    }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -83,3 +83,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
 }
+
+/*extension MainViewController:UISearchBarDelegate{
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
+        searchBar.text
+        
+    }
+}*/
+

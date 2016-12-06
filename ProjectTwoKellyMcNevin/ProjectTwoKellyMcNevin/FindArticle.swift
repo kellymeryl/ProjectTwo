@@ -69,4 +69,6 @@ class WallStreetJournalAPIClient{
         return articles
 
     }
+    
+  //  static func requestArticles(from category : ArticleCategory, with completion: @escaping (_ articles))
 }
