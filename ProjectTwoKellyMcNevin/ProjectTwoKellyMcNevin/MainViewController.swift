@@ -13,7 +13,6 @@ var articles = [Article]()
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
-    @IBOutlet weak var categoryPickerView: UIPickerView!
 
     @IBOutlet weak var dataTableView: UITableView!
     
@@ -50,10 +49,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.articleTitleLabel.text = article.title
         cell.articleDescriptionLabel.text = article.description
         cell.articleImageViewURL = article.urlToImage
-      //  let svc = SecondViewController(coder: article.urlToArticle)
-    //    navigationController?.pushViewController(SecondViewController, animated: true)
-
-     //   self.presentViewController(svc, animated: true, completion: nil)
+        let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
+        navigationController?.pushViewController(svc, animated: true)
         
         return cell
     }
