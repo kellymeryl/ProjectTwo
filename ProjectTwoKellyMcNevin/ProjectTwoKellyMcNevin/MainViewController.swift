@@ -49,10 +49,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.articleTitleLabel.text = article.title
         cell.articleDescriptionLabel.text = article.description
         cell.articleImageViewURL = article.urlToImage
-        let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
-        navigationController?.pushViewController(svc, animated: true)
-        
         return cell
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -65,8 +63,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         else {
             cell.backgroundColor = UIColor.lightGray
+            let article = articles[indexPath.row]
+            let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
+            print(article.urlToArticle)
+            navigationController?.pushViewController(svc, animated: true)
+    
             selectedCell?.backgroundColor = UIColor.white
             selectedCell = cell
+            
+            
         }
         
     }
