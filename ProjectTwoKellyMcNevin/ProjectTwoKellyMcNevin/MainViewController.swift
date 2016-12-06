@@ -49,13 +49,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.articleTitleLabel.text = article.title
         cell.articleDescriptionLabel.text = article.description
         cell.articleImageViewURL = article.urlToImage
-      //  let svc = SafariViewController(url: (string: article.urlToArticle))
-       // navigationController?.pushViewController(SafariViewController, animated: true)
-      //  let destination = SafariViewController() // Your destination
-     //   navigationController?.pushViewController(destination, animated: true)
-   //     UIApplication.shared.openURL(NSURL(string: article.urlToArticle)! as URL)
-   //     UIApplication.shared.openURL(URL (string: article.urlToArticle)!)
-       // self.presentViewController(svc, animated: true, completion: nil)
+      //  let svc = SecondViewController(coder: article.urlToArticle)
+    //    navigationController?.pushViewController(SecondViewController, animated: true)
+
+     //   self.presentViewController(svc, animated: true, completion: nil)
         
         return cell
     }

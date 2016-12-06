@@ -17,6 +17,7 @@
 		EBBEE7B01DF6291C009CB3EF /* FindArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */; };
 		EBBEE7B61DF64380009CB3EF /* ImageFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7B51DF64380009CB3EF /* ImageFetch.swift */; };
 		EBBEE7B81DF64E7B009CB3EF /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7B71DF64E7B009CB3EF /* Categories.swift */; };
+		EBBEE7BC1DF71967009CB3EF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7BB1DF71967009CB3EF /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindArticle.swift; sourceTree = "<group>"; };
 		EBBEE7B51DF64380009CB3EF /* ImageFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetch.swift; sourceTree = "<group>"; };
 		EBBEE7B71DF64E7B009CB3EF /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		EBBEE7BB1DF71967009CB3EF /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */,
 				EBBEE7B51DF64380009CB3EF /* ImageFetch.swift */,
 				EBBEE7B71DF64E7B009CB3EF /* Categories.swift */,
+				EBBEE7BB1DF71967009CB3EF /* SecondViewController.swift */,
 			);
 			path = ProjectTwoKellyMcNevin;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBBEE7BC1DF71967009CB3EF /* SecondViewController.swift in Sources */,
 				EBBEE7B61DF64380009CB3EF /* ImageFetch.swift in Sources */,
 				EBBEE7B81DF64E7B009CB3EF /* Categories.swift in Sources */,
 				EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */,
