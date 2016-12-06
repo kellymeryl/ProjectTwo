@@ -16,6 +16,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var dataTableView: UITableView!
     
+    @IBAction func browseButtonWasTapped(_ sender: Any) {
+        print("hello")
+    }
     
     var selectedCell: DataTableViewCell?
     var selectedListIndex: Int?
@@ -64,10 +67,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else {
             cell.backgroundColor = UIColor.lightGray
             let article = articles[indexPath.row]
+            
             let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
             print(article.urlToArticle)
-            navigationController?.pushViewController(svc, animated: true)
-    
+            self.navigationController?.pushViewController(svc, animated: true)
+            
+            
             selectedCell?.backgroundColor = UIColor.white
             selectedCell = cell
             

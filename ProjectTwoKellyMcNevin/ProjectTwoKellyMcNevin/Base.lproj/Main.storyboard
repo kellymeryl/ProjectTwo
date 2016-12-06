@@ -84,9 +84,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdQ-OU-gn3">
                                 <rect key="frame" x="16" y="617" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Refresh"/>
+                                <state key="normal" title="Browse"/>
                                 <connections>
-                                    <action selector="browseButtonWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uea-Gg-ycG"/>
+                                    <action selector="browseButtonWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VVA-2d-ioo"/>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iqc-WL-9OO">
