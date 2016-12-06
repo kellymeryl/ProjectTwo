@@ -58,7 +58,7 @@ class WallStreetJournalAPIClient{
         let urlPartOne = "https://newsapi.org/v1/articles?source=the-wall-street-journal&category="
         let category = categoryPicked
         let apiKey = "&apiKey=a78a442fe8ef42c29c6cc71e25ba5d6c"
-        let endpoint = urlPartOne + "(\category)" + apiKey
+        let endpoint = urlPartOne + "\(category)" + apiKey
         let url = URLRequest(url: URL(string: endpoint)!)
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let task = session.dataTask(with: url) { data, _, _ in
@@ -70,7 +70,7 @@ class WallStreetJournalAPIClient{
             }
         }
         task.resume()
-        
+            
         }
     }
 

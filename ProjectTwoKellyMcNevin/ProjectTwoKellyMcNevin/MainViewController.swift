@@ -10,12 +10,17 @@ import UIKit
 import SafariServices
 
 var articles = [Article]()
+var filteredResults: [Article] = []
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
-
+    
     @IBOutlet weak var dataTableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchBarWasTapped = false
     
     @IBAction func browseButtonWasTapped(_ sender: Any) {
         categoryPickerView.isHidden = false
@@ -27,15 +32,28 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedCell: DataTableViewCell?
     var selectedListIndex: Int?
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        
+        searchBarWasTapped = true
+        print("searchText \(searchText)")
+        
+        for article in articles{
+            if article.title.contains(searchBar.text!) {
+                filteredResults.append(article)
+            }
+            
+            print(article)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
-
+        
         categoryPickerView.isHidden = true
-      
+        
         let client = WallStreetJournalAPIClient()
         
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
@@ -46,50 +64,52 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
         }
-            client.getData(completion: articleFetchCompletion)
+        client.getData(completion: articleFetchCompletion)
     }
+    
+    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return articles.count
+    return articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DataTableViewCell", for: indexPath) as! DataTableViewCell
-        let article = articles[indexPath.row]
-        cell.articleTitleLabel.text = article.title
-        cell.articleDescriptionTextField.text = article.description
-        cell.articleImageViewURL = article.urlToImage
-        return cell
-
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: "DataTableViewCell", for: indexPath) as! DataTableViewCell
+    let article = articles[indexPath.row]
+    cell.articleTitleLabel.text = article.title
+    cell.articleDescriptionTextField.text = article.description
+    cell.articleImageViewURL = article.urlToImage
+    return cell
+    
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let cell = tableView.cellForRow(at: indexPath) as! DataTableViewCell
-        
-        if cell === selectedCell {
-            cell.backgroundColor = UIColor.white
-            selectedCell = nil
-        }
-        else {
-            cell.backgroundColor = UIColor.lightGray
-            let article = articles[indexPath.row]
-            
-            let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
-            print(article.urlToArticle)
-            self.navigationController?.pushViewController(svc, animated: true)
-            
-            
-            selectedCell?.backgroundColor = UIColor.white
-            selectedCell = cell
-            
-            
-        }
-        
-    }
     
+    let cell = tableView.cellForRow(at: indexPath) as! DataTableViewCell
+    
+    if cell === selectedCell {
+    cell.backgroundColor = UIColor.white
+    selectedCell = nil
+    }
+    else {
+    cell.backgroundColor = UIColor.lightGray
+    let article = articles[indexPath.row]
+    
+    let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
+    print(article.urlToArticle)
+    self.navigationController?.pushViewController(svc, animated: true)
+    
+    
+    selectedCell?.backgroundColor = UIColor.white
+    selectedCell = cell
+    
+    
+    
+    }
+    }
     //IMPLEMENTING PICKER VIEW---------------------------------------------------------------------------
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -139,7 +159,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             categoryPicked = "technology"
             print("Technology")
         }
-
+        
         
     }
     
@@ -150,11 +170,4 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
 }
-
-/*extension MainViewController:UISearchBarDelegate{
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
-        searchBar.text
-        
-    }
-}*/
 

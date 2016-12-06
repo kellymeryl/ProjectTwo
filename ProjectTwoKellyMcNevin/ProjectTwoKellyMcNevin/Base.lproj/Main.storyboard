@@ -46,7 +46,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="144"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r5C-6z-11S" id="MHn-VM-0L1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="144"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2g-i0-G5p">
@@ -129,11 +129,30 @@
                     <connections>
                         <outlet property="categoryPickerView" destination="SEA-6P-LND" id="iwO-e0-XCE"/>
                         <outlet property="dataTableView" destination="eKy-cd-we4" id="JT5-9x-vIe"/>
+                        <outlet property="searchBar" destination="Iqc-WL-9OO" id="d2y-Gb-C7r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="120.8" y="151.57421289355324"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sWm-CR-C7K">
+            <objects>
+                <viewController id="EHd-Zq-WTd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eHr-NJ-Tnj"/>
+                        <viewControllerLayoutGuide type="bottom" id="0DM-4W-bzt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="K8f-wH-CTM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ulH-0n-3gw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="849" y="152"/>
         </scene>
     </scenes>
 </document>
