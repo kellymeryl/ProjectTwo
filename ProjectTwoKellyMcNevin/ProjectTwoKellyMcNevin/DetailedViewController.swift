@@ -15,13 +15,45 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     var selectedIndex: Int?
-    var selectedCellIndex: Int?
+    var selectedItemIndex: Int?
+    
+    var article: Article!
+    
+    override func viewWillDisappear(_ animated: Bool){
+        
+        article.title = titleLabel.text!
+        article.description = descriptionTextField.text!
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        article = articles[selectedIndex!]
+        
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -14,6 +14,12 @@ class DataTableViewCell: UITableViewCell {
     @IBOutlet weak var articleTitleLabel: UILabel!
     @IBOutlet weak var articleDescriptionLabel: UILabel!
     
+    var articleImageViewURL: String?{
+        didSet{
+            articleImageView.setImageWithURL(urlString: articleImageViewURL)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,15 +8,18 @@
 
 import UIKit
 
+var articles = [Article]()
+
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
 
     @IBOutlet weak var dataTableView: UITableView!
+    @IBOutlet weak var userInputTextField: UITextField!
+    
     
     var selectedCell: DataTableViewCell?
     var selectedListIndex: Int?
     
-    var articles = [Article]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             if let art = responseArticles {
-                self.articles = art
+                articles = art
                 self.dataTableView.reloadData()
             }
             
@@ -37,7 +40,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return articles.count
-        // return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,7 +48,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let article = articles[indexPath.row]
         cell.articleTitleLabel.text = article.title
         cell.articleDescriptionLabel.text = article.description
-      //  cell.articleImageView?.image = UIImage(named: article.urlToImage)
+        cell.articleImageViewURL = article.urlToImage
         return cell
     }
     
