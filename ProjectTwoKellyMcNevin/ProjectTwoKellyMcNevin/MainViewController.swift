@@ -105,7 +105,43 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return pickerData[row]
     }
     
-    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if row == 0{
+            categoryPicked = "business"
+            print("Business")
+        }
+        else if row == 1{
+            categoryPicked = "entertainment"
+            print("Entertainment")
+        }
+        else if row == 2{
+            categoryPicked = "gaming"
+            print("Gaming")
+        }
+        else if row == 3{
+            categoryPicked = "general"
+            print("General")
+        }
+        else if row == 4{
+            categoryPicked = "music"
+            print("Music")
+        }
+        else if row == 5{
+            categoryPicked = "science-and-nature"
+            print("Science and Nature")
+        }
+        else if row == 6{
+            categoryPicked = "sport"
+            print("Sport")
+        }
+        else if row == 7{
+            categoryPicked = "technology"
+            print("Technology")
+        }
+
+        
+    }
     
     
     override func didReceiveMemoryWarning() {
