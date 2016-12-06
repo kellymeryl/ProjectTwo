@@ -11,7 +11,7 @@ import SafariServices
 
 var articles = [Article]()
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
 
@@ -22,6 +22,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("hello")
     }
     
+    var pickerData = ["Business", "Entertainment", "Gaming", "General", "Music", "Science and Nature", "Sport", "Technology"]
+    
     var selectedCell: DataTableViewCell?
     var selectedListIndex: Int?
     
@@ -29,8 +31,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categoryPickerView.isHidden = true
+        self.categoryPickerView.dataSource = self
+        self.categoryPickerView.delegate = self
 
+        categoryPickerView.isHidden = true
+      
         let client = WallStreetJournalAPIClient()
         
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
@@ -84,6 +89,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
     }
+    
+    
     
     
     override func didReceiveMemoryWarning() {
