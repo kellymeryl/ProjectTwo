@@ -30,14 +30,14 @@ class FirstScreenViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue == browseTopArticlesWasTapped {
+        if segue.identifier == "browseTopArticlesWasTapped" {
             
             
         }
-        else if segue == browseLatestArticlesWasTapped {
+        else if segue.identifier == "browseLatestArticlesWasTapped" {
             
         }
-        else if segue == browsePopularArticlesWasTapped{
+        else if segue.identifier == "browsePopularArticlesWasTapped" {
             
         }
     }

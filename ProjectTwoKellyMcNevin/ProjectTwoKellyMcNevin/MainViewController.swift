@@ -34,7 +34,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
         }
-        client.getData(completion: articleFetchCompletion) //executed first
+        DispatchQueue.global(qos: .background).async {
+            client.getData(completion: articleFetchCompletion)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
