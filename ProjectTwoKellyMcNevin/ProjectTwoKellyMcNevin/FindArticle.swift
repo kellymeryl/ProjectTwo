@@ -14,7 +14,7 @@ var userInput = ""
 class WallStreetJournalAPIClient{
     
     func getData(completion: @escaping ([Article]?) -> ()) {
-        
+        DispatchQueue.global(qos: .background).async{
         let endpoint = "https://newsapi.org/v1/articles?source=the-wall-street-journal&sortBy=top&apiKey=a78a442fe8ef42c29c6cc71e25ba5d6c"
         let url = URLRequest(url: URL(string: endpoint)!)
         let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -25,13 +25,16 @@ class WallStreetJournalAPIClient{
             DispatchQueue.main.async {
                 completion(articles)
             }
+            
         }
+        
         task.resume()
-
+        }
     }
     
     func getDataFromSearch(completion: @escaping ([Article]?) -> ()) {
-        
+        DispatchQueue.global(qos: .background).async{
+
         let endpoint = "https://newsapi.org/v1/articles?source=the-wall-street-journal&sortBy=top&apiKey=a78a442fe8ef42c29c6cc71e25ba5d6c"
         let url = URLRequest(url: URL(string: endpoint)!)
         let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -45,6 +48,7 @@ class WallStreetJournalAPIClient{
         }
         task.resume()
         
+        }
     }
     
     
