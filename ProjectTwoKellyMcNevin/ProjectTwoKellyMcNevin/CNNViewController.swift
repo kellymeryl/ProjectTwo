@@ -7,8 +7,28 @@
 //
 
 import UIKit
+import SafariServices
+class CNNViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
-class CNNViewController: UIViewController {
+    
+    @IBOutlet weak var cnnPickerView: UIPickerView!
+    @IBOutlet weak var cnnToolBar: UIToolbar!
+    @IBOutlet weak var cnnSpaceButton: UIBarButtonItem!
+    
+    @IBAction func cnnCancelButton(_ sender: Any) {
+        
+        cnnPickerView.isHidden = true
+        cnnToolBar.isHidden = true
+        cnnToolBar.isUserInteractionEnabled = false
+    }
+    
+    @IBAction func cnnDoneButton(_ sender: Any) {
+        
+        cnnPickerView.isHidden = true
+        cnnToolBar.isHidden = true
+        cnnToolBar.isUserInteractionEnabled = false
+    }
+    
     
     var cnnArticles = [Article]()
     var cnnFilteredArticles : [Article]?
@@ -53,6 +73,12 @@ class CNNViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.cnnPickerView.dataSource = self
+        self.cnnPickerView.delegate = self
+        cnnToolBar.isHidden = true
+        cnnToolBar.isUserInteractionEnabled = false
+        cnnPickerView.isHidden = true
+        
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
@@ -85,21 +111,21 @@ class CNNViewController: UIViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DataTableViewCell", for: indexPath) as! DataTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CNNTableViewCell", for: indexPath) as! CNNTableViewCell
         
         if let cnnFilteredArticles = cnnFilteredArticles {
             
             let filteredArticle = cnnFilteredArticles[indexPath.row]
             cell.cnnArticleTitle.text = filteredArticle.title
             cell.cnnDescriptionTextfield.text = filteredArticle.description
-            cell.cnnImageView = filteredArticle.urlToImage
+            cell.articleImageViewURL = filteredArticle.urlToImage
             return cell
         }
         else {
             
             let article = cnnArticles[indexPath.row]
-            cell.articleTitleLabel.text = article.title
-            cell.articleDescriptionTextField.text = article.description
+            cell.cnnArticleTitle.text = article.title
+            cell.cnnDescriptionTextfield.text = article.description
             cell.articleImageViewURL = article.urlToImage
             return cell
         }
@@ -107,7 +133,7 @@ class CNNViewController: UIViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath) as! DataTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! CNNTableViewCell
         
         if cell === selectedCell {
             cell.backgroundColor = UIColor.white
@@ -136,10 +162,52 @@ class CNNViewController: UIViewController {
     }
 
     
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Category.asArray().count
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Category.asArray()[row].rawValue
+    }
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        let category = Category.asArray()[row]
+        
+        let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
+            print("Articles delivered to View Controller")
+            
+            if let cnnFilteredArticles = self.cnnFilteredArticles {
+                if let filteredArt = responseArticles {
+                    self.cnnArticles = filteredArt
+                    self.cnnDataTableView.reloadData()
+                }
+            }
+            else {
+                if let art = responseArticles {
+                    self.cnnArticles = art
+                    self.cnnDataTableView.reloadData()
+                }
+            }
+            
+        }
+        
+        cnnClient.getData(category: category, completion: articleFetchCompletion)
+    }
+    
+
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
  
 

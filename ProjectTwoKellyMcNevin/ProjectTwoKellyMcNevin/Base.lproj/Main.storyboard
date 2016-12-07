@@ -58,9 +58,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="CNN"/>
-                                <connections>
-                                    <segue destination="xRY-fQ-02p" kind="show" id="Mjb-0J-bVf"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -244,6 +241,7 @@
                                 <rect key="frame" x="0.0" y="108" width="375" height="512"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CNNTableViewCell" rowHeight="138" id="vgt-MR-FAc" customClass="CNNTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="138"/>
@@ -289,6 +287,28 @@
                                     <action selector="cnnBrowseButtonWasTapped:" destination="xRY-fQ-02p" eventType="touchUpInside" id="Tqo-n3-nAd"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ORa-KD-48Q">
+                                <rect key="frame" x="0.0" y="448" width="375" height="258"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </pickerView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Trh-Rt-FvL">
+                                <rect key="frame" x="0.0" y="448" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Cancel" id="zLd-cG-XvQ">
+                                        <connections>
+                                            <action selector="cnnCancelButton:" destination="xRY-fQ-02p" id="sDs-lA-pAm"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="221" style="plain" systemItem="fixedSpace" id="ajy-xh-6iv"/>
+                                    <barButtonItem systemItem="done" id="7TI-Ad-RMb">
+                                        <connections>
+                                            <action selector="cnnDoneButton:" destination="xRY-fQ-02p" id="k7C-WD-SDo"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -310,8 +330,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cnnDataTableView" destination="Wx7-qG-0ts" id="r06-aA-A6t"/>
+                        <outlet property="cnnPickerView" destination="ORa-KD-48Q" id="4W4-ag-OLf"/>
                         <outlet property="cnnSearchBar" destination="fXN-6v-emx" id="nsl-TT-Rav"/>
-                        <outlet property="dataTableView" destination="Wx7-qG-0ts" id="Wr7-X0-3h9"/>
+                        <outlet property="cnnSpaceButton" destination="ajy-xh-6iv" id="uOh-MN-We9"/>
+                        <outlet property="cnnToolBar" destination="Trh-Rt-FvL" id="MeH-ZQ-ccv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APy-gl-CqH" userLabel="First Responder" sceneMemberID="firstResponder"/>

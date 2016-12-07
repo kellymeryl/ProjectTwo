@@ -17,7 +17,7 @@ class CNNTableViewCell: UITableViewCell {
     
     var articleImageViewURL: String?{
         didSet{
-            articleImageView.setImageWithURL(urlString: articleImageViewURL)
+            cnnImageView.setImageWithURL(urlString: articleImageViewURL)
         }
     }
 
