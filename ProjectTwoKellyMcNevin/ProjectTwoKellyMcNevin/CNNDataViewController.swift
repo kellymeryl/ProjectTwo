@@ -102,6 +102,7 @@ class CNNDataViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     
         cnnClient.getCNNData(completion: articleFetchCompletion)
+        cnnClient.getWSJData(completion: articleFetchCompletion)
     }
 
     

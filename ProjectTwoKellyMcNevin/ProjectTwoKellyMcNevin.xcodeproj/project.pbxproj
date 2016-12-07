@@ -12,6 +12,9 @@
 		EB3461BD1DF8C341007750AF /* APIClientCNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461BC1DF8C341007750AF /* APIClientCNN.swift */; };
 		EB3461BF1DF8C351007750AF /* CNNDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461BE1DF8C351007750AF /* CNNDataTableViewCell.swift */; };
 		EB3461C11DF8C365007750AF /* CNNDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461C01DF8C365007750AF /* CNNDataViewController.swift */; };
+		EB3461C41DF8D2D9007750AF /* USATodayAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461C31DF8D2D8007750AF /* USATodayAPIClient.swift */; };
+		EB3461C61DF8D2E9007750AF /* USATodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461C51DF8D2E9007750AF /* USATodayViewController.swift */; };
+		EB3461C81DF8D2FC007750AF /* USATodayDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461C71DF8D2FC007750AF /* USATodayDataTableViewCell.swift */; };
 		EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */; };
 		EBA0B9DC1DF6223D00F69C4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DA1DF6223D00F69C4A /* Main.storyboard */; };
 		EBA0B9DE1DF6223D00F69C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DD1DF6223D00F69C4A /* Assets.xcassets */; };
@@ -31,6 +34,9 @@
 		EB3461BC1DF8C341007750AF /* APIClientCNN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientCNN.swift; sourceTree = "<group>"; };
 		EB3461BE1DF8C351007750AF /* CNNDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNDataTableViewCell.swift; sourceTree = "<group>"; };
 		EB3461C01DF8C365007750AF /* CNNDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNDataViewController.swift; sourceTree = "<group>"; };
+		EB3461C31DF8D2D8007750AF /* USATodayAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USATodayAPIClient.swift; sourceTree = "<group>"; };
+		EB3461C51DF8D2E9007750AF /* USATodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USATodayViewController.swift; sourceTree = "<group>"; };
+		EB3461C71DF8D2FC007750AF /* USATodayDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USATodayDataTableViewCell.swift; sourceTree = "<group>"; };
 		EBA0B9D31DF6223D00F69C4A /* ProjectTwoKellyMcNevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTwoKellyMcNevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBA0B9DB1DF6223D00F69C4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +83,16 @@
 			name = CNN;
 			sourceTree = "<group>";
 		};
+		EB3461C21DF8D2C5007750AF /* USA Today */ = {
+			isa = PBXGroup;
+			children = (
+				EB3461C31DF8D2D8007750AF /* USATodayAPIClient.swift */,
+				EB3461C51DF8D2E9007750AF /* USATodayViewController.swift */,
+				EB3461C71DF8D2FC007750AF /* USATodayDataTableViewCell.swift */,
+			);
+			name = "USA Today";
+			sourceTree = "<group>";
+		};
 		EBA0B9CA1DF6223C00F69C4A = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +112,7 @@
 		EBA0B9D51DF6223D00F69C4A /* ProjectTwoKellyMcNevin */ = {
 			isa = PBXGroup;
 			children = (
+				EB3461C21DF8D2C5007750AF /* USA Today */,
 				EB3461BB1DF8C329007750AF /* CNN */,
 				EB3461B11DF8979B007750AF /* Wall Street Journal */,
 				EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */,
@@ -186,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBBEE7BC1DF71967009CB3EF /* SecondViewController.swift in Sources */,
+				EB3461C81DF8D2FC007750AF /* USATodayDataTableViewCell.swift in Sources */,
 				EB3461BF1DF8C351007750AF /* CNNDataTableViewCell.swift in Sources */,
 				EBBEE7B61DF64380009CB3EF /* ImageFetch.swift in Sources */,
 				EB3461BD1DF8C341007750AF /* APIClientCNN.swift in Sources */,
@@ -194,10 +212,12 @@
 				EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */,
 				EBBEE7AE1DF62911009CB3EF /* DataModel.swift in Sources */,
 				EB3461B01DF8951E007750AF /* HomeViewController.swift in Sources */,
+				EB3461C61DF8D2E9007750AF /* USATodayViewController.swift in Sources */,
 				EB3461B31DF89820007750AF /* WSJAPIClient.swift in Sources */,
 				EBBEE7AC1DF62856009CB3EF /* DataTableViewCell.swift in Sources */,
 				EBA0B9E91DF6237500F69C4A /* MainViewController.swift in Sources */,
 				EBBEE7B01DF6291C009CB3EF /* FindArticle.swift in Sources */,
+				EB3461C41DF8D2D9007750AF /* USATodayAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
