@@ -11,6 +11,7 @@
 		EB3461B31DF89820007750AF /* WSJAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461B21DF89820007750AF /* WSJAPIClient.swift */; };
 		EB3461B61DF89875007750AF /* CNNAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461B51DF89875007750AF /* CNNAPIClient.swift */; };
 		EB3461B81DF89898007750AF /* CNNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461B71DF89898007750AF /* CNNViewController.swift */; };
+		EB3461BA1DF89C3E007750AF /* CNNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461B91DF89C3E007750AF /* CNNTableViewCell.swift */; };
 		EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */; };
 		EBA0B9DC1DF6223D00F69C4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DA1DF6223D00F69C4A /* Main.storyboard */; };
 		EBA0B9DE1DF6223D00F69C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DD1DF6223D00F69C4A /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		EB3461B21DF89820007750AF /* WSJAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSJAPIClient.swift; sourceTree = "<group>"; };
 		EB3461B51DF89875007750AF /* CNNAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNAPIClient.swift; sourceTree = "<group>"; };
 		EB3461B71DF89898007750AF /* CNNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNViewController.swift; sourceTree = "<group>"; };
+		EB3461B91DF89C3E007750AF /* CNNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNTableViewCell.swift; sourceTree = "<group>"; };
 		EBA0B9D31DF6223D00F69C4A /* ProjectTwoKellyMcNevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTwoKellyMcNevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBA0B9DB1DF6223D00F69C4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				EB3461B21DF89820007750AF /* WSJAPIClient.swift */,
+				EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */,
 				EBA0B9E81DF6237500F69C4A /* MainViewController.swift */,
 			);
 			name = "Wall Street Journal";
@@ -69,6 +72,7 @@
 			children = (
 				EB3461B51DF89875007750AF /* CNNAPIClient.swift */,
 				EB3461B71DF89898007750AF /* CNNViewController.swift */,
+				EB3461B91DF89C3E007750AF /* CNNTableViewCell.swift */,
 			);
 			name = CNN;
 			sourceTree = "<group>";
@@ -103,7 +107,6 @@
 				EBBEE7B51DF64380009CB3EF /* ImageFetch.swift */,
 				EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */,
 				EBBEE7AD1DF62911009CB3EF /* DataModel.swift */,
-				EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */,
 				EBBEE7BB1DF71967009CB3EF /* SecondViewController.swift */,
 				EB3461AF1DF8951E007750AF /* HomeViewController.swift */,
 			);
@@ -186,6 +189,7 @@
 				EBBEE7B61DF64380009CB3EF /* ImageFetch.swift in Sources */,
 				EBBEE7B81DF64E7B009CB3EF /* Categories.swift in Sources */,
 				EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */,
+				EB3461BA1DF89C3E007750AF /* CNNTableViewCell.swift in Sources */,
 				EB3461B81DF89898007750AF /* CNNViewController.swift in Sources */,
 				EBBEE7AE1DF62911009CB3EF /* DataModel.swift in Sources */,
 				EB3461B61DF89875007750AF /* CNNAPIClient.swift in Sources */,
