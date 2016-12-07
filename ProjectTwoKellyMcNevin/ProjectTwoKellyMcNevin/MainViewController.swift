@@ -9,10 +9,11 @@
 import UIKit
 import SafariServices
 
-var articles = [Article]()
-var filteredResults: [Article] = []
-
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    var articles = [Article]()
+    var filteredResults: [Article]?
+    
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
     
@@ -20,7 +21,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var searchBarWasTapped = false
     
     @IBAction func browseButtonWasTapped(_ sender: Any) {
         categoryPickerView.isHidden = false
@@ -34,16 +34,23 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         
-        searchBarWasTapped = true
-        print("searchText \(searchText)")
-        
-        for article in articles{
-            if article.title.contains(searchBar.text!) {
-                filteredResults.append(article)
-            }
+        if searchText != "" {
+            filteredResults = []
             
-            print(article)
+            for article in articles {
+                if article.title.contains(searchBar.text!) {
+                    filteredResults?.append(article)
+                }
+                
+                print(article)
+            }
         }
+        else {
+            filteredResults = nil
+        }
+        
+        dataTableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
@@ -58,9 +65,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
-            if let art = responseArticles {
-                articles = art
-                self.dataTableView.reloadData()
+            
+            if let filteredResults = self.filteredResults {
+                if let filteredArt = responseArticles {
+                    self.articles = filteredArt
+                    self.dataTableView.reloadData()
+                }
+            }
+            else {
+                if let art = responseArticles {
+                    self.articles = art
+                    self.dataTableView.reloadData()
+                }
             }
             
         }
@@ -68,47 +84,71 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-    return articles.count
+        if let filteredResults = filteredResults {
+            return filteredResults.count
+        }
+        else {
+            return articles.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    let cell = tableView.dequeueReusableCell(withIdentifier: "DataTableViewCell", for: indexPath) as! DataTableViewCell
-    let article = articles[indexPath.row]
-    cell.articleTitleLabel.text = article.title
-    cell.articleDescriptionTextField.text = article.description
-    cell.articleImageViewURL = article.urlToImage
-    return cell
-    
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DataTableViewCell", for: indexPath) as! DataTableViewCell
+        
+        if let filteredResults = filteredResults {
+            
+            let filteredArticle = filteredResults[indexPath.row]
+            cell.articleTitleLabel.text = filteredArticle.title
+            cell.articleDescriptionTextField.text = filteredArticle.description
+            cell.articleImageViewURL = filteredArticle.urlToImage
+            return cell
+        }
+        else {
+            
+            let article = articles[indexPath.row]
+            cell.articleTitleLabel.text = article.title
+            cell.articleDescriptionTextField.text = article.description
+            cell.articleImageViewURL = article.urlToImage
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-    let cell = tableView.cellForRow(at: indexPath) as! DataTableViewCell
-    
-    if cell === selectedCell {
-    cell.backgroundColor = UIColor.white
-    selectedCell = nil
-    }
-    else {
-    cell.backgroundColor = UIColor.lightGray
-    let article = articles[indexPath.row]
-    
-    let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
-    print(article.urlToArticle)
-    self.navigationController?.pushViewController(svc, animated: true)
-    
-    
-    selectedCell?.backgroundColor = UIColor.white
-    selectedCell = cell
-    
-    
-    
-    }
+        
+        let cell = tableView.cellForRow(at: indexPath) as! DataTableViewCell
+        
+        if cell === selectedCell {
+            cell.backgroundColor = UIColor.white
+            selectedCell = nil
+        }
+        else {
+            cell.backgroundColor = UIColor.lightGray
+            
+            if let filteredResults = filteredResults {
+                let filteredArticle = filteredResults[indexPath.row]
+                let svc2 = SFSafariViewController(url: URL(string: filteredArticle.urlToArticle)!)
+                print(filteredArticle.urlToArticle)
+                self.navigationController?.pushViewController(svc2, animated: true)
+            }
+            else
+            {
+                let article = articles[indexPath.row]
+                let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
+                print(article.urlToArticle)
+                self.navigationController?.pushViewController(svc, animated: true)
+            }
+            
+            selectedCell?.backgroundColor = UIColor.white
+            selectedCell = cell
+            
+            
+            
+        }
     }
     //IMPLEMENTING PICKER VIEW---------------------------------------------------------------------------
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
