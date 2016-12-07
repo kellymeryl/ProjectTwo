@@ -280,6 +280,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xRY-fQ-02p" id="pU5-PE-EVU"/>
+                                    <outlet property="delegate" destination="xRY-fQ-02p" id="Q2c-gK-K78"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1U9-EC-9Tf">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
@@ -287,6 +291,7 @@
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Browse"/>
                                 <connections>
+                                    <action selector="browseButtonWasTappe:" destination="xRY-fQ-02p" eventType="touchUpInside" id="mig-g9-es8"/>
                                     <action selector="cnnBrowseButtonWasTapped:" destination="xRY-fQ-02p" eventType="touchUpInside" id="Tqo-n3-nAd"/>
                                 </connections>
                             </button>
@@ -299,9 +304,17 @@
                                 <rect key="frame" x="0.0" y="448" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Cancel" id="zLd-cG-XvQ"/>
+                                    <barButtonItem title="Cancel" id="zLd-cG-XvQ">
+                                        <connections>
+                                            <action selector="cancelButtonWasTapped:" destination="xRY-fQ-02p" id="Lb9-6a-Urp"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="221" style="plain" systemItem="fixedSpace" id="ajy-xh-6iv"/>
-                                    <barButtonItem systemItem="done" id="7TI-Ad-RMb"/>
+                                    <barButtonItem systemItem="done" id="7TI-Ad-RMb">
+                                        <connections>
+                                            <action selector="doneButtonWasTapped:" destination="xRY-fQ-02p" id="3aE-wD-c1H"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -325,6 +338,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cnnDataTableView" destination="Wx7-qG-0ts" id="JG1-03-V0n"/>
+                        <outlet property="dataPickerView" destination="ORa-KD-48Q" id="GC9-Hn-eSl"/>
+                        <outlet property="searchBar" destination="fXN-6v-emx" id="6mM-KT-4uz"/>
+                        <outlet property="searchButton" destination="ajy-xh-6iv" id="zWP-PB-HeS"/>
+                        <outlet property="toolBar" destination="Trh-Rt-FvL" id="g2N-rV-ctj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APy-gl-CqH" userLabel="First Responder" sceneMemberID="firstResponder"/>

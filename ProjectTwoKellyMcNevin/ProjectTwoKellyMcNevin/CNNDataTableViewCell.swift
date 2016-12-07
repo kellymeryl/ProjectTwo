@@ -14,6 +14,13 @@ class CNNDataTableViewCell: UITableViewCell {
     @IBOutlet weak var cnnImageView: UIImageView!
     @IBOutlet weak var cnnDescriptionView: UITextView!
     
+    var articleImageViewURL: String?{
+        didSet{
+            cnnImageView.setImageWithURL(urlString: articleImageViewURL)
+        }
+    }
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
