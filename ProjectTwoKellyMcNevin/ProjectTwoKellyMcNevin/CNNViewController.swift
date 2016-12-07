@@ -8,7 +8,7 @@
 
 import UIKit
 import SafariServices
-class CNNViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class CNNViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     
     @IBOutlet weak var cnnPickerView: UIPickerView!
@@ -17,9 +17,9 @@ class CNNViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBAction func cnnCancelButton(_ sender: Any) {
         
-        cnnPickerView.isHidden = true
-        cnnToolBar.isHidden = true
-        cnnToolBar.isUserInteractionEnabled = false
+       cnnPickerView.isHidden = true
+       cnnToolBar.isHidden = true
+       cnnToolBar.isUserInteractionEnabled = false
     }
     
     @IBAction func cnnDoneButton(_ sender: Any) {
@@ -105,6 +105,8 @@ class CNNViewController: UIViewController, UITableViewDataSource, UITableViewDel
             return cnnFilteredArticles.count
         }
         else {
+            print(cnnArticles.count)
+
             return cnnArticles.count
         }
     }
@@ -128,6 +130,7 @@ class CNNViewController: UIViewController, UITableViewDataSource, UITableViewDel
             cell.cnnDescriptionTextfield.text = article.description
             cell.articleImageViewURL = article.urlToImage
             return cell
+            print(cell)
         }
     }
     
@@ -142,19 +145,19 @@ class CNNViewController: UIViewController, UITableViewDataSource, UITableViewDel
         else {
             cell.backgroundColor = UIColor.lightGray
             
-            if let cnnFilteredArticles = cnnFilteredArticles {
+        /*    if let cnnFilteredArticles = cnnFilteredArticles {
                 let filteredArticle = cnnFilteredArticles[indexPath.row]
                 let svc2 = SFSafariViewController(url: URL(string: filteredArticle.urlToArticle)!)
                 print(filteredArticle.urlToArticle)
                 self.navigationController?.pushViewController(svc2, animated: true)
             }
             else
-            {
+            {*/
                 let article = cnnArticles[indexPath.row]
                 let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
                 print(article.urlToArticle)
                 self.navigationController?.pushViewController(svc, animated: true)
-            }
+           // }
             
             selectedCell?.backgroundColor = UIColor.white
             selectedCell = cell
@@ -202,7 +205,7 @@ class CNNViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
 
-    
+ 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

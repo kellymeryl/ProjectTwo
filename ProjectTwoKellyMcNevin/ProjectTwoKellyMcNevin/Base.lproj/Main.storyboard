@@ -58,6 +58,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="CNN"/>
+                                <connections>
+                                    <segue destination="xRY-fQ-02p" kind="show" id="KOZ-3h-lUT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -220,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="673" y="152"/>
         </scene>
-        <!--View Controller-->
+        <!--CNNDataViewController-->
         <scene sceneID="JqO-sw-eXK">
             <objects>
-                <viewController id="xRY-fQ-02p" customClass="CNNViewController" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="CNNDataViewController" id="xRY-fQ-02p" customClass="CNNDataViewController" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bW7-6R-ybC"/>
                         <viewControllerLayoutGuide type="bottom" id="1fG-Tw-8f3"/>
@@ -243,7 +246,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CNNTableViewCell" rowHeight="138" id="vgt-MR-FAc" customClass="CNNTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CNNDataTableViewCell" rowHeight="138" id="vgt-MR-FAc" customClass="CNNDataTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="138"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vgt-MR-FAc" id="scQ-X3-l8T">
@@ -271,9 +274,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="cnnArticleTitle" destination="Vzy-R9-E0K" id="jS9-gy-bG3"/>
-                                            <outlet property="cnnDescriptionTextfield" destination="iq7-2N-a0k" id="6ZX-KI-Voe"/>
-                                            <outlet property="cnnImageView" destination="mFj-1p-eTf" id="fGX-qz-Cqt"/>
+                                            <outlet property="cnnDescriptionView" destination="iq7-2N-a0k" id="lD3-cv-Ums"/>
+                                            <outlet property="cnnImageView" destination="mFj-1p-eTf" id="sVM-ts-lDd"/>
+                                            <outlet property="cnnTitleLabel" destination="Vzy-R9-E0K" id="Vg5-Fz-SQJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -296,17 +299,9 @@
                                 <rect key="frame" x="0.0" y="448" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Cancel" id="zLd-cG-XvQ">
-                                        <connections>
-                                            <action selector="cnnCancelButton:" destination="xRY-fQ-02p" id="sDs-lA-pAm"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem title="Cancel" id="zLd-cG-XvQ"/>
                                     <barButtonItem width="221" style="plain" systemItem="fixedSpace" id="ajy-xh-6iv"/>
-                                    <barButtonItem systemItem="done" id="7TI-Ad-RMb">
-                                        <connections>
-                                            <action selector="cnnDoneButton:" destination="xRY-fQ-02p" id="k7C-WD-SDo"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem systemItem="done" id="7TI-Ad-RMb"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -329,11 +324,7 @@
                         </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="cnnDataTableView" destination="Wx7-qG-0ts" id="r06-aA-A6t"/>
-                        <outlet property="cnnPickerView" destination="ORa-KD-48Q" id="4W4-ag-OLf"/>
-                        <outlet property="cnnSearchBar" destination="fXN-6v-emx" id="nsl-TT-Rav"/>
-                        <outlet property="cnnSpaceButton" destination="ajy-xh-6iv" id="uOh-MN-We9"/>
-                        <outlet property="cnnToolBar" destination="Trh-Rt-FvL" id="MeH-ZQ-ccv"/>
+                        <outlet property="cnnDataTableView" destination="Wx7-qG-0ts" id="JG1-03-V0n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APy-gl-CqH" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		EB3461B01DF8951E007750AF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461AF1DF8951E007750AF /* HomeViewController.swift */; };
 		EB3461B31DF89820007750AF /* WSJAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461B21DF89820007750AF /* WSJAPIClient.swift */; };
-		EB3461B61DF89875007750AF /* CNNAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461B51DF89875007750AF /* CNNAPIClient.swift */; };
-		EB3461B81DF89898007750AF /* CNNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461B71DF89898007750AF /* CNNViewController.swift */; };
-		EB3461BA1DF89C3E007750AF /* CNNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461B91DF89C3E007750AF /* CNNTableViewCell.swift */; };
+		EB3461BD1DF8C341007750AF /* APIClientCNN.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461BC1DF8C341007750AF /* APIClientCNN.swift */; };
+		EB3461BF1DF8C351007750AF /* CNNDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461BE1DF8C351007750AF /* CNNDataTableViewCell.swift */; };
+		EB3461C11DF8C365007750AF /* CNNDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461C01DF8C365007750AF /* CNNDataViewController.swift */; };
 		EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */; };
 		EBA0B9DC1DF6223D00F69C4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DA1DF6223D00F69C4A /* Main.storyboard */; };
 		EBA0B9DE1DF6223D00F69C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DD1DF6223D00F69C4A /* Assets.xcassets */; };
@@ -28,9 +28,9 @@
 /* Begin PBXFileReference section */
 		EB3461AF1DF8951E007750AF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EB3461B21DF89820007750AF /* WSJAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSJAPIClient.swift; sourceTree = "<group>"; };
-		EB3461B51DF89875007750AF /* CNNAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNAPIClient.swift; sourceTree = "<group>"; };
-		EB3461B71DF89898007750AF /* CNNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNViewController.swift; sourceTree = "<group>"; };
-		EB3461B91DF89C3E007750AF /* CNNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNTableViewCell.swift; sourceTree = "<group>"; };
+		EB3461BC1DF8C341007750AF /* APIClientCNN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientCNN.swift; sourceTree = "<group>"; };
+		EB3461BE1DF8C351007750AF /* CNNDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNDataTableViewCell.swift; sourceTree = "<group>"; };
+		EB3461C01DF8C365007750AF /* CNNDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CNNDataViewController.swift; sourceTree = "<group>"; };
 		EBA0B9D31DF6223D00F69C4A /* ProjectTwoKellyMcNevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTwoKellyMcNevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBA0B9DB1DF6223D00F69C4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,12 +67,12 @@
 			name = "Wall Street Journal";
 			sourceTree = "<group>";
 		};
-		EB3461B41DF89865007750AF /* CNN */ = {
+		EB3461BB1DF8C329007750AF /* CNN */ = {
 			isa = PBXGroup;
 			children = (
-				EB3461B51DF89875007750AF /* CNNAPIClient.swift */,
-				EB3461B71DF89898007750AF /* CNNViewController.swift */,
-				EB3461B91DF89C3E007750AF /* CNNTableViewCell.swift */,
+				EB3461BC1DF8C341007750AF /* APIClientCNN.swift */,
+				EB3461BE1DF8C351007750AF /* CNNDataTableViewCell.swift */,
+				EB3461C01DF8C365007750AF /* CNNDataViewController.swift */,
 			);
 			name = CNN;
 			sourceTree = "<group>";
@@ -96,7 +96,7 @@
 		EBA0B9D51DF6223D00F69C4A /* ProjectTwoKellyMcNevin */ = {
 			isa = PBXGroup;
 			children = (
-				EB3461B41DF89865007750AF /* CNN */,
+				EB3461BB1DF8C329007750AF /* CNN */,
 				EB3461B11DF8979B007750AF /* Wall Street Journal */,
 				EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */,
 				EBA0B9DA1DF6223D00F69C4A /* Main.storyboard */,
@@ -186,13 +186,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBBEE7BC1DF71967009CB3EF /* SecondViewController.swift in Sources */,
+				EB3461BF1DF8C351007750AF /* CNNDataTableViewCell.swift in Sources */,
 				EBBEE7B61DF64380009CB3EF /* ImageFetch.swift in Sources */,
+				EB3461BD1DF8C341007750AF /* APIClientCNN.swift in Sources */,
+				EB3461C11DF8C365007750AF /* CNNDataViewController.swift in Sources */,
 				EBBEE7B81DF64E7B009CB3EF /* Categories.swift in Sources */,
 				EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */,
-				EB3461BA1DF89C3E007750AF /* CNNTableViewCell.swift in Sources */,
-				EB3461B81DF89898007750AF /* CNNViewController.swift in Sources */,
 				EBBEE7AE1DF62911009CB3EF /* DataModel.swift in Sources */,
-				EB3461B61DF89875007750AF /* CNNAPIClient.swift in Sources */,
 				EB3461B01DF8951E007750AF /* HomeViewController.swift in Sources */,
 				EB3461B31DF89820007750AF /* WSJAPIClient.swift in Sources */,
 				EBBEE7AC1DF62856009CB3EF /* DataTableViewCell.swift in Sources */,
