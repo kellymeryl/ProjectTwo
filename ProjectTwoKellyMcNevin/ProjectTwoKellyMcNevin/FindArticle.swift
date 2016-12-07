@@ -9,14 +9,47 @@
 import Foundation
 import UIKit
 
-var userInput = ""
-var categoryPicked = ""
+enum Category: String {
+    
+    case business = "business"
+    case entertainment = "entertainment"
+    case gaming = "gaming"
+    case general = "general"
+    case music = "music"
+    case scienceAndNature = "science-and-nature"
+    case technology = "technology"
+    
+    var displayValue: String {
+        switch self{
+        case .business :
+            return "Business"
+        case .entertainment:
+            return "Entertainment"
+        case .gaming:
+            return "Gaming"
+        case .general:
+            return "General"
+        case .music:
+            return "Music"
+        case .scienceAndNature:
+            return "Science And Nature"
+        case .technology:
+            return "Technology"
+        }
+    }
+    
+    
+    static func asArray() -> [Category] {
+        return [.business, .entertainment, .gaming, .general, .music, .scienceAndNature, .technology]
+    }
+    
+}
 
 class WallStreetJournalAPIClient{
     
-    func getData(completion: @escaping ([Article]?) -> ()) {
+    func getData(category: Category = .general, completion: @escaping ([Article]?) -> ()) {
         DispatchQueue.global(qos: .background).async{
-        let endpoint = "https://newsapi.org/v1/articles?source=the-wall-street-journal&sortBy=top&apiKey=a78a442fe8ef42c29c6cc71e25ba5d6c"
+        let endpoint = "https://newsapi.org/v1/articles?source=the-wall-street-journal&category=\(category.rawValue)&sortBy=top&apiKey=a78a442fe8ef42c29c6cc71e25ba5d6c"
         let url = URLRequest(url: URL(string: endpoint)!)
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let task = session.dataTask(with: url) { data, _, _ in
@@ -52,11 +85,11 @@ class WallStreetJournalAPIClient{
         }
     }
     
-    func getDataFromCategorySelection(completion: @escaping ([Article]?) -> ()) {
+ /*   func getDataFromCategorySelection(completion: @escaping ([Article]?) -> ()) {
         DispatchQueue.global(qos: .background).async{
         
         let urlPartOne = "https://newsapi.org/v1/articles?source=the-wall-street-journal&category="
-        let category = categoryPicked
+      //  let category = categoryPicked
         let apiKey = "&apiKey=a78a442fe8ef42c29c6cc71e25ba5d6c"
         let endpoint = urlPartOne + "\(category)" + apiKey
         let url = URLRequest(url: URL(string: endpoint)!)
@@ -73,7 +106,7 @@ class WallStreetJournalAPIClient{
             
         }
     }
-
+*/
     
     func getArticles(_ json: [String: Any]) -> [Article] {
         let listOfArticles = json["articles"] as! [[String: Any]]

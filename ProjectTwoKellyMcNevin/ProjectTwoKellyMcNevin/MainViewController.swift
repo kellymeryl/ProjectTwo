@@ -14,6 +14,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var articles = [Article]()
     var filteredResults: [Article]?
     
+    let client = WallStreetJournalAPIClient()
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
     
@@ -21,10 +22,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var spaceButton: UIBarButtonItem!
+
+    
+    @IBAction func doneButtonWasTapped(_ sender: Any) {
+        
+        categoryPickerView.isHidden = true
+        toolBar.isHidden = true
+        toolBar.isUserInteractionEnabled = false
+    }
     
     @IBAction func browseButtonWasTapped(_ sender: Any) {
         categoryPickerView.isHidden = false
-        print("hello")
+        toolBar.isHidden = false
+        toolBar.isUserInteractionEnabled = true
     }
     
     var pickerData = ["Business", "Entertainment", "Gaming", "General", "Music", "Science and Nature", "Sport", "Technology"]
@@ -58,10 +70,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
-        
+        toolBar.isHidden = true
+        toolBar.isUserInteractionEnabled = false
         categoryPickerView.isHidden = true
-        
-        let client = WallStreetJournalAPIClient()
+    
         
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
@@ -145,69 +157,54 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             selectedCell?.backgroundColor = UIColor.white
             selectedCell = cell
-            
-            
-            
         }
     }
     //IMPLEMENTING PICKER VIEW---------------------------------------------------------------------------
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return Category.asArray().count
     }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        return Category.asArray()[row].rawValue
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        if row == 0{
-            categoryPicked = "business"
-            print("Business")
-        }
-        else if row == 1{
-            categoryPicked = "entertainment"
-            print("Entertainment")
-        }
-        else if row == 2{
-            categoryPicked = "gaming"
-            print("Gaming")
-        }
-        else if row == 3{
-            categoryPicked = "general"
-            print("General")
-        }
-        else if row == 4{
-            categoryPicked = "music"
-            print("Music")
-        }
-        else if row == 5{
-            categoryPicked = "science-and-nature"
-            print("Science and Nature")
-        }
-        else if row == 6{
-            categoryPicked = "sport"
-            print("Sport")
-        }
-        else if row == 7{
-            categoryPicked = "technology"
-            print("Technology")
-        }
+        let category = Category.asArray()[row]
         
+        let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
+            print("Articles delivered to View Controller")
+            
+            if let filteredResults = self.filteredResults {
+                if let filteredArt = responseArticles {
+                    self.articles = filteredArt
+                    self.dataTableView.reloadData()
+                }
+            }
+            else {
+                if let art = responseArticles {
+                    self.articles = art
+                    self.dataTableView.reloadData()
+                }
+            }
+            
+        }
+
         
+        client.getData(category: category, completion: articleFetchCompletion)
+     
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
     
 }
 
