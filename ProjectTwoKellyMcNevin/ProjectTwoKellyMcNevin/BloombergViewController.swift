@@ -1,5 +1,5 @@
 //
-//  EconomistViewController.swift
+//  BloombergViewController.swift
 //  ProjectTwoKellyMcNevin
 //
 //  Created by Kelly McNevin on 12/7/16.
@@ -7,33 +7,30 @@
 //
 
 import UIKit
-import Foundation
 import SafariServices
 
-class EconomistViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class BloombergViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var economistArticles = [Article]()
-    var economistFilteredResults: [Article]?
-
-    var selectedCell: EconomistTableViewCell?
+    var bloombergArticles = [Article]()
+    var bloombergFilteredResults: [Article]?
+    var selectedCell: BloombergTableViewCell?
     var selectedListIndex: Int?
+    let bloombergClient = BloombergAPIClient()
     
-    let economistClient = EconomistAPIClient()
-
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var dataPickerView: UIPickerView!
-    @IBOutlet weak var toolBar: UIToolbar!
     @IBAction func browseButtonWasTapped(_ sender: Any) {
         dataPickerView.isHidden = false
         toolBar.isHidden = false
         toolBar.isUserInteractionEnabled = true
     }
-    @IBAction func cancelButtonWasTapped(_ sender: Any) {
+    
+    @IBOutlet weak var dataPickerView: UIPickerView!
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBAction func cancelBarWasTapped(_ sender: Any) {
         dataPickerView.isHidden = true
         toolBar.isHidden = true
         toolBar.isUserInteractionEnabled = false
     }
+    
     @IBOutlet weak var spaceButton: UIBarButtonItem!
     @IBAction func doneButtonWasTapped(_ sender: Any) {
         dataPickerView.isHidden = true
@@ -41,21 +38,25 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
         toolBar.isUserInteractionEnabled = false
     }
     
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         
         if searchText != "" {
-            economistFilteredResults = []
+            bloombergFilteredResults = []
             
-            for article in economistArticles {
+            for article in bloombergArticles {
                 if article.title.contains(searchBar.text!) {
-                    economistFilteredResults?.append(article)
+                    bloombergFilteredResults?.append(article)
                 }
                 
                 print(article)
             }
         }
         else {
-            economistFilteredResults = nil
+            bloombergFilteredResults = nil
         }
         
         tableView.reloadData()
@@ -64,7 +65,7 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.dataPickerView.dataSource = self
         self.dataPickerView.delegate = self
         toolBar.isHidden = true
@@ -74,58 +75,56 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
-            if let economistFilteredResults = self.economistFilteredResults {
+            if let bloombergFilteredResults = self.bloombergFilteredResults {
                 if let filteredArt = responseArticles {
-                    self.economistArticles = filteredArt
+                    self.bloombergArticles = filteredArt
                     self.tableView.reloadData()
                 }
             }
             else {
                 if let art = responseArticles {
-                    self.economistArticles = art
+                    self.bloombergArticles = art
                     self.tableView.reloadData()
                 }
             }
         }
         
-        economistClient.getEconomistData(completion: articleFetchCompletion)
-        
+        bloombergClient.getBloombergData(completion: articleFetchCompletion)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if let economistFilteredResults = economistFilteredResults {
-            return economistFilteredResults.count
+        if let bloombergFilteredResults = bloombergFilteredResults {
+            return bloombergFilteredResults.count
         }
         else {
-            return economistArticles.count
+            return bloombergArticles.count
         }
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EconomistTableViewCell", for: indexPath) as! EconomistTableViewCell
-        if let economistFilteredResults = economistFilteredResults {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BloombergTableViewCell", for: indexPath) as! BloombergTableViewCell
+        if let bloombergFilteredResults = bloombergFilteredResults {
             
-            let filteredArticle = economistFilteredResults[indexPath.row]
-            cell.articleTitle.text = filteredArticle.title
+            let filteredArticle = bloombergFilteredResults[indexPath.row]
+            cell.titleLabel.text = filteredArticle.title
             cell.articleDescriptionView.text = filteredArticle.description
             cell.articleImageViewURL = filteredArticle.urlToImage
             return cell
         }
         else {
             
-            let economistArticle = economistArticles[indexPath.row]
-            cell.articleTitle.text = economistArticle.title
-            cell.articleDescriptionView.text = economistArticle.description
-            cell.articleImageViewURL = economistArticle.urlToImage
+            let bloombergArticle = bloombergArticles[indexPath.row]
+            cell.titleLabel.text = bloombergArticle.title
+            cell.articleDescriptionView.text = bloombergArticle.description
+            cell.articleImageViewURL = bloombergArticle.urlToImage
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath) as! EconomistTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! BloombergTableViewCell
         
         if cell === selectedCell {
             cell.backgroundColor = UIColor.white
@@ -134,15 +133,15 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
         else {
             cell.backgroundColor = UIColor.lightGray
             
-            if let economistFilteredResults = economistFilteredResults {
-                let filteredArticle = economistFilteredResults[indexPath.row]
+            if let bloombergFilteredResults = bloombergFilteredResults {
+                let filteredArticle = bloombergFilteredResults[indexPath.row]
                 let svc2 = SFSafariViewController(url: URL(string: filteredArticle.urlToArticle)!)
                 print(filteredArticle.urlToArticle)
                 self.navigationController?.pushViewController(svc2, animated: true)
             }
             else
             {
-                let article = economistArticles[indexPath.row]
+                let article = bloombergArticles[indexPath.row]
                 let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
                 print(article.urlToArticle)
                 self.navigationController?.pushViewController(svc, animated: true)
@@ -153,7 +152,7 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
     }
-
+    
     //IMPLEMENTING PICKER VIEW---------------------------------------------------------------------------
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -177,26 +176,27 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
-            if let economistFilteredResults = self.economistFilteredResults {
+            if let bloombergFilteredResults = self.bloombergFilteredResults {
                 if let filteredArt = responseArticles {
-                    self.economistArticles = filteredArt
+                    self.bloombergArticles = filteredArt
                     self.tableView.reloadData()
                 }
             }
             else {
                 if let art = responseArticles {
-                    self.economistArticles = art
+                    self.bloombergArticles = art
                     self.tableView.reloadData()
                 }
             }
         }
         
-        economistClient.getEconomistData(category: category, completion: articleFetchCompletion)
+        bloombergClient.getBloombergData(category: category, completion: articleFetchCompletion)
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
 }

@@ -384,10 +384,10 @@
             </objects>
             <point key="canvasLocation" x="655.20000000000005" y="893.70314842578716"/>
         </scene>
-        <!--View Controller-->
+        <!--BloombergViewController-->
         <scene sceneID="1It-zY-y8g">
             <objects>
-                <viewController id="hMd-aU-KvQ" sceneMemberID="viewController">
+                <viewController title="BloombergViewController" id="hMd-aU-KvQ" customClass="BloombergViewController" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="THY-Qb-oN1"/>
                         <viewControllerLayoutGuide type="bottom" id="fEg-AW-oMz"/>
@@ -406,7 +406,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="142" id="Kft-Y0-Bvn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BloombergTableViewCell" rowHeight="142" id="Kft-Y0-Bvn" customClass="BloombergTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kft-Y0-Bvn" id="qUT-g8-VpB">
@@ -433,14 +433,26 @@
                                                 </textView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="articleDescriptionView" destination="Pys-00-sOg" id="72N-kl-WI4"/>
+                                            <outlet property="articleImageView" destination="Fw8-Gf-lE7" id="egH-uo-ry7"/>
+                                            <outlet property="titleLabel" destination="wUX-89-NWU" id="cot-tB-6TD"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hMd-aU-KvQ" id="NR6-Gs-rtY"/>
+                                    <outlet property="delegate" destination="hMd-aU-KvQ" id="cN5-Lc-QZC"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEN-zl-qQb">
                                 <rect key="frame" x="0.0" y="611" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Browse"/>
+                                <connections>
+                                    <action selector="browseButtonWasTapped:" destination="hMd-aU-KvQ" eventType="touchUpInside" id="3Hc-wZ-SN1"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39H-hZ-jto">
                                 <rect key="frame" x="0.0" y="402" width="375" height="265"/>
@@ -450,9 +462,17 @@
                                 <rect key="frame" x="0.0" y="423" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="cancel" id="yHe-0D-JAq"/>
+                                    <barButtonItem systemItem="cancel" id="yHe-0D-JAq">
+                                        <connections>
+                                            <action selector="cancelBarWasTapped:" destination="hMd-aU-KvQ" id="faa-hv-nve"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="229" style="plain" systemItem="fixedSpace" id="f17-lu-64y"/>
-                                    <barButtonItem systemItem="done" id="Fl6-ss-dLs"/>
+                                    <barButtonItem systemItem="done" id="Fl6-ss-dLs">
+                                        <connections>
+                                            <action selector="doneButtonWasTapped:" destination="hMd-aU-KvQ" id="fe6-kw-D0c"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -474,15 +494,22 @@
                             </subviews>
                         </view>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dataPickerView" destination="39H-hZ-jto" id="fXm-fj-ZIg"/>
+                        <outlet property="searchBar" destination="Ocb-w0-eQy" id="hve-2F-TZk"/>
+                        <outlet property="spaceButton" destination="f17-lu-64y" id="Pjs-he-8T0"/>
+                        <outlet property="tableView" destination="9vN-Gm-M0r" id="77A-5l-DgC"/>
+                        <outlet property="toolBar" destination="C4E-zW-mjy" id="gGE-Jd-OTm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rR2-Mr-yQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1341.5999999999999" y="893.70314842578716"/>
         </scene>
-        <!--View Controller-->
+        <!--FinancialTimesViewController-->
         <scene sceneID="fCr-YP-7xc">
             <objects>
-                <viewController id="Oqf-z6-n0d" sceneMemberID="viewController">
+                <viewController title="FinancialTimesViewController" id="Oqf-z6-n0d" customClass="FinancialTimesViewController" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xMG-aR-dls"/>
                         <viewControllerLayoutGuide type="bottom" id="8gB-AM-nnU"/>
@@ -496,7 +523,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="149" id="BpH-8R-KTD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FinancialTimesTableViewCell" rowHeight="149" id="BpH-8R-KTD" customClass="FinancialTimesTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="149"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BpH-8R-KTD" id="WhI-zy-sIm">
@@ -523,14 +550,26 @@
                                                 </textView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="articleImageView" destination="Wuf-Ty-iOV" id="QdL-z7-ZnB"/>
+                                            <outlet property="descriptionView" destination="EKw-un-ZUI" id="1op-WU-b91"/>
+                                            <outlet property="titleLabel" destination="Udy-ki-L4R" id="8N7-Sd-u02"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Oqf-z6-n0d" id="srV-dw-VX4"/>
+                                    <outlet property="delegate" destination="Oqf-z6-n0d" id="97V-Ye-DGd"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6P-Y6-2Ml">
                                 <rect key="frame" x="0.0" y="606" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Browse"/>
+                                <connections>
+                                    <action selector="browseButtonWasTapped:" destination="Oqf-z6-n0d" eventType="touchUpInside" id="3CH-oS-lpJ"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n4y-45-9Os">
                                 <rect key="frame" x="0.0" y="446" width="375" height="221"/>
@@ -540,11 +579,24 @@
                                 <rect key="frame" x="0.0" y="446" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="cancel" id="zzs-Mq-zx1"/>
+                                    <barButtonItem systemItem="cancel" id="zzs-Mq-zx1">
+                                        <connections>
+                                            <action selector="cancelButtonWasTapped:" destination="Oqf-z6-n0d" id="82E-vR-isB"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="239" style="plain" systemItem="fixedSpace" id="mC8-h4-7eh"/>
-                                    <barButtonItem systemItem="done" id="Gn2-KA-1YJ"/>
+                                    <barButtonItem systemItem="done" id="Gn2-KA-1YJ">
+                                        <connections>
+                                            <action selector="doneButtonWasTapped:" destination="Oqf-z6-n0d" id="cRc-dV-dmf"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ik-pG-UlZ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -564,6 +616,12 @@
                             </subviews>
                         </view>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dataPickerView" destination="n4y-45-9Os" id="Q4h-ak-hLM"/>
+                        <outlet property="spaceButton" destination="mC8-h4-7eh" id="0hE-ER-jap"/>
+                        <outlet property="tableView" destination="l5o-rh-sVJ" id="UNW-tP-XjR"/>
+                        <outlet property="toolBar" destination="wBO-fz-QlY" id="4kS-yZ-8bi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTE-MG-stf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

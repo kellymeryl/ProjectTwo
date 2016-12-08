@@ -1,5 +1,5 @@
 //
-//  EconomistViewController.swift
+//  FinancialTimesViewController.swift
 //  ProjectTwoKellyMcNevin
 //
 //  Created by Kelly McNevin on 12/7/16.
@@ -7,55 +7,53 @@
 //
 
 import UIKit
-import Foundation
 import SafariServices
 
-class EconomistViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    var economistArticles = [Article]()
-    var economistFilteredResults: [Article]?
+class FinancialTimesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    var selectedCell: EconomistTableViewCell?
+    var financialTimesArticles = [Article]()
+    var financialFilteredResults: [Article]?
+    var selectedCell: FinancialTimesTableViewCell?
     var selectedListIndex: Int?
     
-    let economistClient = EconomistAPIClient()
+    let financialTimesClient = FinancialTimesAPIClient()
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var dataPickerView: UIPickerView!
-    @IBOutlet weak var toolBar: UIToolbar!
-    @IBAction func browseButtonWasTapped(_ sender: Any) {
-        dataPickerView.isHidden = false
-        toolBar.isHidden = false
-        toolBar.isUserInteractionEnabled = true
-    }
+    
+    @IBOutlet weak var spaceButton: UIBarButtonItem!
     @IBAction func cancelButtonWasTapped(_ sender: Any) {
         dataPickerView.isHidden = true
         toolBar.isHidden = true
         toolBar.isUserInteractionEnabled = false
     }
-    @IBOutlet weak var spaceButton: UIBarButtonItem!
     @IBAction func doneButtonWasTapped(_ sender: Any) {
         dataPickerView.isHidden = true
         toolBar.isHidden = true
         toolBar.isUserInteractionEnabled = false
     }
     
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var dataPickerView: UIPickerView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBAction func browseButtonWasTapped(_ sender: Any) {
+        dataPickerView.isHidden = false
+        toolBar.isHidden = false
+        toolBar.isUserInteractionEnabled = true
+    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         
         if searchText != "" {
-            economistFilteredResults = []
+            financialFilteredResults = []
             
-            for article in economistArticles {
+            for article in financialTimesArticles {
                 if article.title.contains(searchBar.text!) {
-                    economistFilteredResults?.append(article)
+                    financialFilteredResults?.append(article)
                 }
                 
                 print(article)
             }
         }
         else {
-            economistFilteredResults = nil
+            financialFilteredResults = nil
         }
         
         tableView.reloadData()
@@ -64,7 +62,7 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.dataPickerView.dataSource = self
         self.dataPickerView.delegate = self
         toolBar.isHidden = true
@@ -74,58 +72,55 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
-            if let economistFilteredResults = self.economistFilteredResults {
+            if let financialFilteredResults = self.financialFilteredResults {
                 if let filteredArt = responseArticles {
-                    self.economistArticles = filteredArt
+                    self.financialTimesArticles = filteredArt
                     self.tableView.reloadData()
                 }
             }
             else {
                 if let art = responseArticles {
-                    self.economistArticles = art
+                    self.financialTimesArticles = art
                     self.tableView.reloadData()
                 }
             }
         }
         
-        economistClient.getEconomistData(completion: articleFetchCompletion)
-        
+        financialTimesClient.getFinancialTimesData(completion: articleFetchCompletion)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if let economistFilteredResults = economistFilteredResults {
-            return economistFilteredResults.count
+        if let financialFilteredResults = financialFilteredResults {
+            return financialFilteredResults.count
         }
         else {
-            return economistArticles.count
+            return financialTimesArticles.count
         }
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EconomistTableViewCell", for: indexPath) as! EconomistTableViewCell
-        if let economistFilteredResults = economistFilteredResults {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FinancialTimesTableViewCell", for: indexPath) as! FinancialTimesTableViewCell
+        if let financialFilteredResults = financialFilteredResults {
             
-            let filteredArticle = economistFilteredResults[indexPath.row]
-            cell.articleTitle.text = filteredArticle.title
-            cell.articleDescriptionView.text = filteredArticle.description
+            let filteredArticle = financialFilteredResults[indexPath.row]
+            cell.titleLabel.text = filteredArticle.title
+            cell.descriptionView.text = filteredArticle.description
             cell.articleImageViewURL = filteredArticle.urlToImage
             return cell
         }
         else {
             
-            let economistArticle = economistArticles[indexPath.row]
-            cell.articleTitle.text = economistArticle.title
-            cell.articleDescriptionView.text = economistArticle.description
-            cell.articleImageViewURL = economistArticle.urlToImage
+            let financialTimesArticle = financialTimesArticles[indexPath.row]
+            cell.titleLabel.text = financialTimesArticle.title
+            cell.descriptionView.text = financialTimesArticle.description
+            cell.articleImageViewURL = financialTimesArticle.urlToImage
             return cell
         }
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath) as! EconomistTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! FinancialTimesTableViewCell
         
         if cell === selectedCell {
             cell.backgroundColor = UIColor.white
@@ -134,15 +129,15 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
         else {
             cell.backgroundColor = UIColor.lightGray
             
-            if let economistFilteredResults = economistFilteredResults {
-                let filteredArticle = economistFilteredResults[indexPath.row]
+            if let financialFilteredResults = financialFilteredResults {
+                let filteredArticle = financialFilteredResults[indexPath.row]
                 let svc2 = SFSafariViewController(url: URL(string: filteredArticle.urlToArticle)!)
                 print(filteredArticle.urlToArticle)
                 self.navigationController?.pushViewController(svc2, animated: true)
             }
             else
             {
-                let article = economistArticles[indexPath.row]
+                let article = financialTimesArticles[indexPath.row]
                 let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
                 print(article.urlToArticle)
                 self.navigationController?.pushViewController(svc, animated: true)
@@ -153,7 +148,6 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
     }
-
     //IMPLEMENTING PICKER VIEW---------------------------------------------------------------------------
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -177,26 +171,26 @@ class EconomistViewController: UIViewController, UITableViewDataSource, UITableV
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
-            if let economistFilteredResults = self.economistFilteredResults {
+            if let financialFilteredResults = self.financialFilteredResults {
                 if let filteredArt = responseArticles {
-                    self.economistArticles = filteredArt
+                    self.financialTimesArticles = filteredArt
                     self.tableView.reloadData()
                 }
             }
             else {
                 if let art = responseArticles {
-                    self.economistArticles = art
+                    self.financialTimesArticles = art
                     self.tableView.reloadData()
                 }
             }
         }
         
-        economistClient.getEconomistData(category: category, completion: articleFetchCompletion)
+        financialTimesClient.getFinancialTimesData(category: category, completion: articleFetchCompletion)
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
 }

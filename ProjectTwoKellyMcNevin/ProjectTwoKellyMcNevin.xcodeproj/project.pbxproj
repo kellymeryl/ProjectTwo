@@ -24,6 +24,12 @@
 		EB3461D91DF8F3D6007750AF /* EconomistAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461D81DF8F3D6007750AF /* EconomistAPIClient.swift */; };
 		EB3461DB1DF8F3E5007750AF /* EconomistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461DA1DF8F3E5007750AF /* EconomistTableViewCell.swift */; };
 		EB3461DD1DF8F3F3007750AF /* EconomistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461DC1DF8F3F3007750AF /* EconomistViewController.swift */; };
+		EB3461E01DF8F857007750AF /* BloombergAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461DF1DF8F857007750AF /* BloombergAPIClient.swift */; };
+		EB3461E21DF8F8BF007750AF /* BloombergViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461E11DF8F8BF007750AF /* BloombergViewController.swift */; };
+		EB3461E41DF8F8DC007750AF /* BloombergTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461E31DF8F8DC007750AF /* BloombergTableViewCell.swift */; };
+		EB3461E71DF8FCDC007750AF /* FinancialTimesClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461E61DF8FCDC007750AF /* FinancialTimesClientAPI.swift */; };
+		EB3461E91DF8FCEA007750AF /* FinancialTimesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461E81DF8FCEA007750AF /* FinancialTimesTableViewCell.swift */; };
+		EB3461EB1DF8FCF9007750AF /* FinancialTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461EA1DF8FCF9007750AF /* FinancialTimesViewController.swift */; };
 		EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */; };
 		EBA0B9DC1DF6223D00F69C4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DA1DF6223D00F69C4A /* Main.storyboard */; };
 		EBA0B9DE1DF6223D00F69C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DD1DF6223D00F69C4A /* Assets.xcassets */; };
@@ -55,6 +61,12 @@
 		EB3461D81DF8F3D6007750AF /* EconomistAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EconomistAPIClient.swift; sourceTree = "<group>"; };
 		EB3461DA1DF8F3E5007750AF /* EconomistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EconomistTableViewCell.swift; sourceTree = "<group>"; };
 		EB3461DC1DF8F3F3007750AF /* EconomistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EconomistViewController.swift; sourceTree = "<group>"; };
+		EB3461DF1DF8F857007750AF /* BloombergAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloombergAPIClient.swift; sourceTree = "<group>"; };
+		EB3461E11DF8F8BF007750AF /* BloombergViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloombergViewController.swift; sourceTree = "<group>"; };
+		EB3461E31DF8F8DC007750AF /* BloombergTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloombergTableViewCell.swift; sourceTree = "<group>"; };
+		EB3461E61DF8FCDC007750AF /* FinancialTimesClientAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinancialTimesClientAPI.swift; sourceTree = "<group>"; };
+		EB3461E81DF8FCEA007750AF /* FinancialTimesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinancialTimesTableViewCell.swift; sourceTree = "<group>"; };
+		EB3461EA1DF8FCF9007750AF /* FinancialTimesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinancialTimesViewController.swift; sourceTree = "<group>"; };
 		EBA0B9D31DF6223D00F69C4A /* ProjectTwoKellyMcNevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTwoKellyMcNevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBA0B9DB1DF6223D00F69C4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +153,26 @@
 			name = "The Economist";
 			sourceTree = "<group>";
 		};
+		EB3461DE1DF8F842007750AF /* Bloomberg News */ = {
+			isa = PBXGroup;
+			children = (
+				EB3461DF1DF8F857007750AF /* BloombergAPIClient.swift */,
+				EB3461E11DF8F8BF007750AF /* BloombergViewController.swift */,
+				EB3461E31DF8F8DC007750AF /* BloombergTableViewCell.swift */,
+			);
+			name = "Bloomberg News";
+			sourceTree = "<group>";
+		};
+		EB3461E51DF8FCCB007750AF /* Financial Times */ = {
+			isa = PBXGroup;
+			children = (
+				EB3461E61DF8FCDC007750AF /* FinancialTimesClientAPI.swift */,
+				EB3461E81DF8FCEA007750AF /* FinancialTimesTableViewCell.swift */,
+				EB3461EA1DF8FCF9007750AF /* FinancialTimesViewController.swift */,
+			);
+			name = "Financial Times";
+			sourceTree = "<group>";
+		};
 		EBA0B9CA1DF6223C00F69C4A = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +192,8 @@
 		EBA0B9D51DF6223D00F69C4A /* ProjectTwoKellyMcNevin */ = {
 			isa = PBXGroup;
 			children = (
+				EB3461E51DF8FCCB007750AF /* Financial Times */,
+				EB3461DE1DF8F842007750AF /* Bloomberg News */,
 				EB3461D71DF8F3BE007750AF /* The Economist */,
 				EB3461D01DF8ED48007750AF /* Search All */,
 				EB3461C91DF8E40B007750AF /* Business Insider */,
@@ -255,7 +289,9 @@
 			files = (
 				EB3461CB1DF8E41E007750AF /* BusinessInsiderAPIClient.swift in Sources */,
 				EB3461CD1DF8E432007750AF /* BusinessDataTableViewCell.swift in Sources */,
+				EB3461E71DF8FCDC007750AF /* FinancialTimesClientAPI.swift in Sources */,
 				EBBEE7BC1DF71967009CB3EF /* SecondViewController.swift in Sources */,
+				EB3461E91DF8FCEA007750AF /* FinancialTimesTableViewCell.swift in Sources */,
 				EB3461D21DF8ED5D007750AF /* SearchAllAPIClient.swift in Sources */,
 				EB3461C81DF8D2FC007750AF /* USATodayDataTableViewCell.swift in Sources */,
 				EB3461BF1DF8C351007750AF /* CNNDataTableViewCell.swift in Sources */,
@@ -272,10 +308,14 @@
 				EB3461C61DF8D2E9007750AF /* USATodayViewController.swift in Sources */,
 				EB3461D91DF8F3D6007750AF /* EconomistAPIClient.swift in Sources */,
 				EB3461B31DF89820007750AF /* WSJAPIClient.swift in Sources */,
+				EB3461E41DF8F8DC007750AF /* BloombergTableViewCell.swift in Sources */,
 				EBBEE7AC1DF62856009CB3EF /* DataTableViewCell.swift in Sources */,
 				EBA0B9E91DF6237500F69C4A /* MainViewController.swift in Sources */,
 				EBBEE7B01DF6291C009CB3EF /* FindArticle.swift in Sources */,
 				EB3461D61DF8EDC4007750AF /* SearchAllTableViewCell.swift in Sources */,
+				EB3461E21DF8F8BF007750AF /* BloombergViewController.swift in Sources */,
+				EB3461E01DF8F857007750AF /* BloombergAPIClient.swift in Sources */,
+				EB3461EB1DF8FCF9007750AF /* FinancialTimesViewController.swift in Sources */,
 				EB3461CF1DF8E447007750AF /* BusinessInsiderViewController.swift in Sources */,
 				EB3461C41DF8D2D9007750AF /* USATodayAPIClient.swift in Sources */,
 			);
