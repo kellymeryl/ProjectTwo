@@ -15,7 +15,7 @@ class BusinessInsiderAPIClient {
         DispatchQueue.global(qos: .background).async{
             
             
-            let endpoint = "https://newsapi.org/v1/articles?source=business-insider&category=\(category.rawValue)&sortBy=top&apiKey=a78a442fe8ef42c29c6cc71e25ba5d6c"
+            let endpoint = "https://newsapi.org/v1/articles?source=the-wall-street-journal&category=\(category.rawValue)&sortBy=top&apiKey=a78a442fe8ef42c29c6cc71e25ba5d6c"
             let url = URLRequest(url: URL(string: endpoint)!)
             let session = URLSession(configuration: URLSessionConfiguration.default)
             let task = session.dataTask(with: url) { data, _, _ in
