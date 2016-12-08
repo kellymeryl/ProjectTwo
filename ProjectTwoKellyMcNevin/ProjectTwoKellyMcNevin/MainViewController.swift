@@ -14,7 +14,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var articles = [Article]()
     var filteredResults: [Article]?
     
-    let client = WallStreetJournalAPIClient()
+    let client = APIClient()
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
     

@@ -43,3 +43,33 @@ enum Category: String {
         return [.business, .entertainment, .gaming, .general, .music, .scienceAndNature, .technology]
     }
 }
+
+enum Source: String {
+    
+    case financialTimes = "financial-times"
+    case bloombergNews = "bloomberg-news"
+    case theEconomist = "the-economist"
+    case businessInsider = "business-insider"
+    case usaToday = "usa-today"
+    case cnn = "cnn"
+    case wallStreetJournal = "the-wall-street-journal"
+    
+    var displayValue: String {
+        switch self{
+        case .financialTimes :
+            return "Financial Times"
+        case .bloombergNews:
+            return "Bloomberg News"
+        case .theEconomist:
+            return "The Economist"
+        case .businessInsider:
+            return "Business Insider"
+        case .usaToday:
+            return "USA Today"
+        case .cnn:
+            return "CNN"
+        case .wallStreetJournal:
+            return "the-wall-street-journal"
+        }
+    }
+}
