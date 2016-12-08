@@ -1,5 +1,5 @@
 //
-//  USATodayDataTableViewCell.swift
+//  BusinessDataTableViewCell.swift
 //  ProjectTwoKellyMcNevin
 //
 //  Created by Kelly McNevin on 12/7/16.
@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import Foundation
 
-class USATodayDataTableViewCell: UITableViewCell {
+class BusinessDataTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var articleTitle: UILabel!
+    @IBOutlet weak var articleImage: UIImageView!
     @IBOutlet weak var articleDescriptionView: UITextView!
-    @IBOutlet weak var articleTitleView: UILabel!
-    
+
     var articleImageViewURL: String?{
         didSet{
-            articleImageView.setImageWithURL(urlString: articleImageViewURL)
+            articleImage.setImageWithURL(urlString: articleImageViewURL)
         }
     }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
