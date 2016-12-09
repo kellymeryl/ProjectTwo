@@ -61,7 +61,7 @@ class SourceTitleViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         selectedSource = source
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: source)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
 
         print(titleName.title)
        

@@ -9,12 +9,14 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-
-    var source: String = "the-wall-street-journal"
     
     @IBOutlet weak var scrollView: UIScrollView!
     
     let leftMenuWidth:CGFloat = 200
+    
+    
+    var mainViewController: MainViewController?
+    var menuViewController: SourceTitleViewController?
 
     
     @IBAction func menuButtonWasTapped(_ sender: Any) {
@@ -50,8 +52,15 @@ class SecondViewController: UIViewController {
     
     func toggleMenu(){
         
-        scrollView.contentOffset.x == 0  ? closeMenu() : openMenu()
-        
+        if scrollView.contentOffset.x == 0 {
+            closeMenu()
+        } else {
+            openMenu()
+            if let source = menuViewController?.selectedSource {
+                mainViewController?.selectedSource = source
+            }
+            mainViewController?.loadTableViewURLFromBar()
+        }
     }
     
     // This wrapper function is necessary because
@@ -88,18 +97,18 @@ class SecondViewController: UIViewController {
         
         if segue.identifier == "EmbedMain" {
             
-            let mainViewControllerItem = segue.destination as! MainViewController
-            mainViewControllerItem.selectedSource = source
+            if let main = segue.destination as? MainViewController {
+                self.mainViewController = main
+            }
         }
-        
-        // TODO: set prperty for menuViewController
-        
-       else if segue.identifier == "EmbedinMenu"
+         
+        // TODO: fix
+       else if segue.identifier == "EmbedToMenu"
         {
-            let menuViewController = segue.destination as! SourceTitleViewController
-            menuViewController.selectedSource = source
+            if let menu = segue.destination as? SourceTitleViewController {
+                menuViewController = menu
+            }
         }
-        //menuViewController.
     }
     
 }

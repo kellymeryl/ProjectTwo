@@ -30,7 +30,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var spaceButton: UIBarButtonItem!
     
-    var selectedSource: String?
+    var selectedSource: String = "the-wall-street-journal"
     @IBAction func doneButtonWasTapped(_ sender: Any) {
         
         categoryPickerView.isHidden = true
@@ -70,7 +70,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func loadTableViewURLFromBar(source: String?) {
+    func loadTableViewURLFromBar() {
         
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
@@ -87,7 +87,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.dataTableView.reloadData()
             }
         }
-        client.getData(newsSource: source!, category: .general, completion: articleFetchCompletion)
+        client.getData(newsSource: selectedSource, category: .general, completion: articleFetchCompletion)
         
     }
     
@@ -102,7 +102,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toolBar.isUserInteractionEnabled = false
         categoryPickerView.isHidden = true
     
-        loadTableViewURLFromBar(source: selectedSource)
+        loadTableViewURLFromBar()
         
     }
     
