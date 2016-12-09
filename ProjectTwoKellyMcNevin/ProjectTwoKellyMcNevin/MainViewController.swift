@@ -75,7 +75,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if let art = responseArticles {
                 self.articles = art
-                self.dataTableView.reloadData()
+     //           self.dataTableView.reloadData()
             }
         }
         client.getData(newsSource: articleTypeName!, category: .general, completion: articleFetchCompletion)
