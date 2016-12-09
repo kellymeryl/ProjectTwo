@@ -47,12 +47,13 @@ enum Category: String {
 enum Source: String {
     
     case financialTimes = "financial-times"
-    case bloombergNews = "bloomberg-news"
+    case bloombergNews = "bloomberg"
     case theEconomist = "the-economist"
     case businessInsider = "business-insider"
     case usaToday = "usa-today"
     case cnn = "cnn"
     case wallStreetJournal = "the-wall-street-journal"
+    case searchAll = "search all"
     
     var displayValue: String {
         switch self{
@@ -70,6 +71,13 @@ enum Source: String {
             return "CNN"
         case .wallStreetJournal:
             return "the-wall-street-journal"
+        case .searchAll:
+            return "Search all"
         }
+        
+    }
+    
+    static func asArray2() -> [Source] {
+        return [.financialTimes, .bloombergNews, .theEconomist, .businessInsider, .usaToday, .cnn, .wallStreetJournal]
     }
 }

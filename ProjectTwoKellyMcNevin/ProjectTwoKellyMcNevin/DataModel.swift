@@ -36,12 +36,12 @@ class NewsSourceTitle {
 }
 
 var arrayOfTitles: [NewsSourceTitle] = [
-    NewsSourceTitle(title: "Bloomberg News"),
-    NewsSourceTitle(title: "Business Insider"),
-    NewsSourceTitle(title: "CNN"),
     NewsSourceTitle(title: "Financial Times"),
+    NewsSourceTitle(title: "Bloomberg News"),
     NewsSourceTitle(title: "The Economist"),
+    NewsSourceTitle(title: "Business Insider"),
     NewsSourceTitle(title: "USA Today"),
+    NewsSourceTitle(title: "CNN"),
     NewsSourceTitle(title: "The Wall Street Journal"),
     NewsSourceTitle(title: "Search All")
 ]

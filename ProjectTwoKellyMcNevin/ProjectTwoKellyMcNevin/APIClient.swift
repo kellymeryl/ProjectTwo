@@ -16,6 +16,9 @@ func getData(newsSource:  String = "the-wall-street-journal", category: Category
         
         
         let endpoint = "https://newsapi.org/v1/articles?source=\(newsSource)&category=\(category.rawValue)&sortBy=top&apiKey=a78a442fe8ef42c29c6cc71e25ba5d6c"
+        print(newsSource)
+        print(category.rawValue)
+        print(endpoint)
         let url = URLRequest(url: URL(string: endpoint)!)
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let task = session.dataTask(with: url) { data, _, _ in
@@ -37,11 +40,11 @@ func getArticles(_ json: [String: Any]) -> [Article] {
     var articles = [Article]()
     
     for jsonArticle in listOfArticles {
-        let author = jsonArticle["author"] as! String
-        let title = jsonArticle["title"] as! String
-        let description = jsonArticle["description"] as! String
-        let urlToImage = jsonArticle["urlToImage"] as! String
-        let urlToArticle = jsonArticle["url"] as! String
+        let author = jsonArticle["author"] as? String ?? ""
+        let title = jsonArticle["title"] as? String ?? ""
+        let description = jsonArticle["description"] as? String ?? ""
+        let urlToImage = jsonArticle["urlToImage"] as? String ?? ""
+        let urlToArticle = jsonArticle["url"] as? String ?? ""
         let article = Article(title: title, author: author, description: description,urlToImage: urlToImage, urlToArticle: urlToArticle)
         articles.append(article)
     }

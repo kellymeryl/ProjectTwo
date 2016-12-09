@@ -15,6 +15,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var filteredResults: [Article]?
     
     var selectedIndex: Int?
+    var articleTypeName: String?
     
     let client = APIClient()
     
@@ -26,7 +27,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var spaceButton: UIBarButtonItem!
-
+    
     
     @IBAction func doneButtonWasTapped(_ sender: Any) {
         
@@ -67,8 +68,24 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    func loadTableViewURLFromBar() {
+        
+        let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
+            print("Articles delivered to View Controller")
+            
+            if let art = responseArticles {
+                self.articles = art
+                self.dataTableView.reloadData()
+            }
+        }
+        client.getData(newsSource: articleTypeName!, category: .general, completion: articleFetchCompletion)
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
@@ -76,33 +93,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toolBar.isUserInteractionEnabled = false
         categoryPickerView.isHidden = true
     
-
-        if selectedCell != nil {
-            
-            let newsSourceName = arrayOfTitles[selectedIndex!].title
-            
-            let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
-                print("Articles delivered to View Controller")
-                
-                if let filteredResults = self.filteredResults {
-                    if let filteredArt = responseArticles {
-                        self.articles = filteredArt
-                        self.dataTableView.reloadData()
-                    }
-                }
-                else {
-                    if let art = responseArticles {
-                        self.articles = art
-                        self.dataTableView.reloadData()
-                    }
-                }
-                
-            }
-            client.getData(newsSource: newsSourceName, completion: articleFetchCompletion)
-            
-        }
-    
-        else {
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
@@ -116,14 +106,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 if let art = responseArticles {
                     self.articles = art
                     self.dataTableView.reloadData()
+                    print(self.dataTableView)
                 }
             }
             
         }
         client.getData(completion: articleFetchCompletion)
+        
     }
-    }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -223,10 +213,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
         }
-
+        
         
         client.getData(category: category, completion: articleFetchCompletion)
-     
+        
     }
     
     override func didReceiveMemoryWarning() {

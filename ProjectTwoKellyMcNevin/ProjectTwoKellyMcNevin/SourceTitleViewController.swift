@@ -11,7 +11,7 @@ import UIKit
 class SourceTitleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var newsTitleTableView: UITableView!
-
+        
     var selectedCell: SourceTitleTableViewCell?
     var selectedListIndex: Int?
 
@@ -36,6 +36,10 @@ class SourceTitleViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath) as! SourceTitleTableViewCell
+        let titleName = arrayOfTitles[indexPath.row]
+        
+        let source = Source.asArray2()[indexPath.row].rawValue
+        print(source)
         
         if cell === selectedCell {
             cell.backgroundColor = UIColor.white
@@ -52,12 +56,18 @@ class SourceTitleViewController: UIViewController, UITableViewDataSource, UITabl
             MainViewController.selectedIndex = newsTitleTableView.indexPathForSelectedRow?.row
         }
         
-        
+        let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
+
+        
+        mainViewController.articleTypeName = source
+        mainViewController.loadTableViewURLFromBar()
+        mainViewController.reloadInputViews()
+
+        print(titleName.title)
        
-        
-        
-           // print(newsSourceName)
+
     }
    
  
