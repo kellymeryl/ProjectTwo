@@ -57,6 +57,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB9E6D391DFB289600AD6BD7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EBA0B9DA1DF6223D00F69C4A /* Main.storyboard */,
+				EBA0B9DF1DF6223D00F69C4A /* LaunchScreen.storyboard */,
+				EBA0B9DD1DF6223D00F69C4A /* Assets.xcassets */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		EB9E6D3A1DFB289900AD6BD7 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEE7AD1DF62911009CB3EF /* DataModel.swift */,
+				EB3FF65B1DF9CCB300623867 /* NewsSources.swift */,
+				EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */,
+				EBBEE7B71DF64E7B009CB3EF /* Categories.swift */,
+				EB3FF65D1DF9D07500623867 /* APIClient.swift */,
+				EBBEE7B51DF64380009CB3EF /* ImageFetch.swift */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		EB9E6D3B1DFB289F00AD6BD7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EB3461AF1DF8951E007750AF /* HomeViewController.swift */,
+				EBBEE7BB1DF71967009CB3EF /* SecondViewController.swift */,
+				EBA0B9E81DF6237500F69C4A /* MainViewController.swift */,
+				EB78A54A1DFA2DD10058624C /* SourceTitleViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		EB9E6D3C1DFB28A500AD6BD7 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */,
+				EB78A5491DFA2DD10058624C /* SourceTitleTableViewCell.swift */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		EB9E6D3D1DFB28D700AD6BD7 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
 		EBA0B9CA1DF6223C00F69C4A = {
 			isa = PBXGroup;
 			children = (
@@ -76,23 +127,12 @@
 		EBA0B9D51DF6223D00F69C4A /* ProjectTwoKellyMcNevin */ = {
 			isa = PBXGroup;
 			children = (
-				EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */,
-				EBA0B9E81DF6237500F69C4A /* MainViewController.swift */,
-				EBA0B9DA1DF6223D00F69C4A /* Main.storyboard */,
-				EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */,
-				EBA0B9DD1DF6223D00F69C4A /* Assets.xcassets */,
-				EBA0B9DF1DF6223D00F69C4A /* LaunchScreen.storyboard */,
+				EB9E6D3D1DFB28D700AD6BD7 /* Logic */,
+				EB9E6D3C1DFB28A500AD6BD7 /* Table View Cells */,
+				EB9E6D3B1DFB289F00AD6BD7 /* View Controllers */,
+				EB9E6D3A1DFB289900AD6BD7 /* Data Model */,
+				EB9E6D391DFB289600AD6BD7 /* UI */,
 				EBA0B9E21DF6223D00F69C4A /* Info.plist */,
-				EBBEE7B71DF64E7B009CB3EF /* Categories.swift */,
-				EBBEE7B51DF64380009CB3EF /* ImageFetch.swift */,
-				EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */,
-				EBBEE7AD1DF62911009CB3EF /* DataModel.swift */,
-				EBBEE7BB1DF71967009CB3EF /* SecondViewController.swift */,
-				EB3461AF1DF8951E007750AF /* HomeViewController.swift */,
-				EB3FF65B1DF9CCB300623867 /* NewsSources.swift */,
-				EB78A5491DFA2DD10058624C /* SourceTitleTableViewCell.swift */,
-				EB78A54A1DFA2DD10058624C /* SourceTitleViewController.swift */,
-				EB3FF65D1DF9D07500623867 /* APIClient.swift */,
 			);
 			path = ProjectTwoKellyMcNevin;
 			sourceTree = "<group>";
