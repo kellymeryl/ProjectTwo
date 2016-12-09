@@ -26,3 +26,22 @@ class Article {
     }
     
 }
+
+class NewsSourceTitle {
+    var title: String
+    
+    init(title: String){
+        self.title = title
+    }
+}
+
+var arrayOfTitles: [NewsSourceTitle] = [
+    NewsSourceTitle(title: "Bloomberg News"),
+    NewsSourceTitle(title: "Business Insider"),
+    NewsSourceTitle(title: "CNN"),
+    NewsSourceTitle(title: "Financial Times"),
+    NewsSourceTitle(title: "The Economist"),
+    NewsSourceTitle(title: "USA Today"),
+    NewsSourceTitle(title: "The Wall Street Journal"),
+    NewsSourceTitle(title: "Search All")
+]
