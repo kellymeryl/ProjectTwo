@@ -47,6 +47,10 @@ class SourceTitleViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let MainViewController = segue.destination as! MainViewController
+        MainViewController.selectedIndex = newsTitleTableView.indexPathForSelectedRow?.row
+    }
     
     
     override func didReceiveMemoryWarning() {

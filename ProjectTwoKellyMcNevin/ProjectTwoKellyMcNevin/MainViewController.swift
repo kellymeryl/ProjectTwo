@@ -14,6 +14,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var articles = [Article]()
     var filteredResults: [Article]?
     
+    var selectedIndex: Int?
+    
     let client = APIClient()
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
@@ -74,7 +76,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toolBar.isUserInteractionEnabled = false
         categoryPickerView.isHidden = true
     
-        
+    
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
@@ -94,8 +96,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         client.getData(completion: articleFetchCompletion)
     }
-    
-    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
