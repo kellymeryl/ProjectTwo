@@ -11,12 +11,7 @@ import UIKit
 class SourceTitleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var newsTitleTableView: UITableView!
-    
-    @IBAction func toggleMenu(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
-    }
- 
-    
+
     var selectedCell: SourceTitleTableViewCell?
     var selectedListIndex: Int?
 

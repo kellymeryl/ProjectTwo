@@ -1150,7 +1150,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TuH-yT-b3V">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TuH-yT-b3V">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcs-pk-8SF">
@@ -1340,7 +1340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r2F-zg-KY7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2658.4000000000001" y="306.29685157421289"/>
+            <point key="canvasLocation" x="-1874" y="248"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ChQ-9K-yvh">
@@ -1358,12 +1358,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BfQ-O9-9ag" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1802" y="344"/>
+            <point key="canvasLocation" x="-945" y="260"/>
         </scene>
-        <!--View Controller-->
+        <!--SourceTitleViewController-->
         <scene sceneID="58m-6B-9Ko">
             <objects>
-                <viewController id="2y1-Mc-N5b" sceneMemberID="viewController">
+                <viewController title="SourceTitleViewController" id="2y1-Mc-N5b" customClass="SourceTitleViewController" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kak-oS-fAf"/>
                         <viewControllerLayoutGuide type="bottom" id="3Ar-vr-NeY"/>
@@ -1372,19 +1372,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G5m-Fx-YIO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G5m-Fx-YIO">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SourceTitleTableViewCell" rowHeight="99" id="SSw-0J-wZq" customClass="SourceTitleTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="200" height="99"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SourceTitleTableViewCell" rowHeight="91" id="SSw-0J-wZq" customClass="SourceTitleTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="200" height="91"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SSw-0J-wZq" id="qKF-sj-Bgh">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="98"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Source Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Im-fh-4bW">
-                                                    <rect key="frame" x="8" y="19" width="181" height="61"/>
+                                                    <rect key="frame" x="8" y="15" width="181" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1398,6 +1398,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2y1-Mc-N5b" id="m4Z-bH-jMe"/>
+                                    <outlet property="delegate" destination="2y1-Mc-N5b" id="z3D-kl-xnX"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1408,10 +1412,13 @@
                             <constraint firstItem="3Ar-vr-NeY" firstAttribute="top" secondItem="G5m-Fx-YIO" secondAttribute="bottom" id="nhh-uJ-GBv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="newsTitleTableView" destination="G5m-Fx-YIO" id="NxH-cw-T0S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1W5-e8-NTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1056" y="-339.58020989505252"/>
+            <point key="canvasLocation" x="-1310.4000000000001" y="-449.32533733133437"/>
         </scene>
     </scenes>
 </document>

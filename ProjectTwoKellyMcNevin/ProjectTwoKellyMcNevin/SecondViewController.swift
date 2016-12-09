@@ -12,7 +12,7 @@ class SecondViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
-    let leftMenuWidth:CGFloat = 260
+    let leftMenuWidth:CGFloat = 200
 
     
     @IBAction func menuButtonWasTapped(_ sender: Any) {
@@ -58,13 +58,13 @@ class SecondViewController: UIViewController {
     
     // Use scrollview content offset-x to slide the menu.
     func closeMenu(animated:Bool = true){
-        scrollView.setContentOffset(CGPoint(x: -leftMenuWidth, y: 0), animated: animated)
+        scrollView.setContentOffset(CGPoint(x: -leftMenuWidth, y: -65), animated: animated)
     }
     
     // Open is the natural state of the menu because of how the storyboard is setup.
     func openMenu(){
         print("opening menu")
-        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0, y: -65), animated: false)
     }
     
     // see http://stackoverflow.com/questions/25666269/ios8-swift-how-to-detect-orientation-change
