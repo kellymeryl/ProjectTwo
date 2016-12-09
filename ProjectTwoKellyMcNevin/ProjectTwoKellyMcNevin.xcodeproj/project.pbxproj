@@ -7,21 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB3461B01DF8951E007750AF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461AF1DF8951E007750AF /* HomeViewController.swift */; };
+		EB3461B31DF89820007750AF /* WSJAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3461B21DF89820007750AF /* WSJAPIClient.swift */; };
+		EB3FF65C1DF9CCB300623867 /* NewsSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FF65B1DF9CCB300623867 /* NewsSources.swift */; };
+		EB3FF65E1DF9D07500623867 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FF65D1DF9D07500623867 /* APIClient.swift */; };
+		EB78A54B1DFA2DD10058624C /* SourceTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB78A5491DFA2DD10058624C /* SourceTitleTableViewCell.swift */; };
+		EB78A54C1DFA2DD10058624C /* SourceTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB78A54A1DFA2DD10058624C /* SourceTitleViewController.swift */; };
 		EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */; };
-		EBA0B9D91DF6223D00F69C4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0B9D81DF6223D00F69C4A /* ViewController.swift */; };
 		EBA0B9DC1DF6223D00F69C4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DA1DF6223D00F69C4A /* Main.storyboard */; };
 		EBA0B9DE1DF6223D00F69C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DD1DF6223D00F69C4A /* Assets.xcassets */; };
 		EBA0B9E11DF6223D00F69C4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA0B9DF1DF6223D00F69C4A /* LaunchScreen.storyboard */; };
+		EBA0B9E91DF6237500F69C4A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0B9E81DF6237500F69C4A /* MainViewController.swift */; };
+		EBBEE7AC1DF62856009CB3EF /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */; };
+		EBBEE7AE1DF62911009CB3EF /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7AD1DF62911009CB3EF /* DataModel.swift */; };
+		EBBEE7B01DF6291C009CB3EF /* FindArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */; };
+		EBBEE7B61DF64380009CB3EF /* ImageFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7B51DF64380009CB3EF /* ImageFetch.swift */; };
+		EBBEE7B81DF64E7B009CB3EF /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7B71DF64E7B009CB3EF /* Categories.swift */; };
+		EBBEE7BC1DF71967009CB3EF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBEE7BB1DF71967009CB3EF /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB3461AF1DF8951E007750AF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EB3461B21DF89820007750AF /* WSJAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSJAPIClient.swift; sourceTree = "<group>"; };
+		EB3FF65B1DF9CCB300623867 /* NewsSources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSources.swift; sourceTree = "<group>"; };
+		EB3FF65D1DF9D07500623867 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		EB78A5491DFA2DD10058624C /* SourceTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTitleTableViewCell.swift; sourceTree = "<group>"; };
+		EB78A54A1DFA2DD10058624C /* SourceTitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTitleViewController.swift; sourceTree = "<group>"; };
 		EBA0B9D31DF6223D00F69C4A /* ProjectTwoKellyMcNevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTwoKellyMcNevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EBA0B9D81DF6223D00F69C4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EBA0B9DB1DF6223D00F69C4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBA0B9DD1DF6223D00F69C4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA0B9E01DF6223D00F69C4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBA0B9E21DF6223D00F69C4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBA0B9E81DF6237500F69C4A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
+		EBBEE7AD1DF62911009CB3EF /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindArticle.swift; sourceTree = "<group>"; };
+		EBBEE7B51DF64380009CB3EF /* ImageFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetch.swift; sourceTree = "<group>"; };
+		EBBEE7B71DF64E7B009CB3EF /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		EBBEE7BB1DF71967009CB3EF /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB3461B11DF8979B007750AF /* Wall Street Journal */ = {
+			isa = PBXGroup;
+			children = (
+				EB3461B21DF89820007750AF /* WSJAPIClient.swift */,
+				EBBEE7AB1DF62856009CB3EF /* DataTableViewCell.swift */,
+			);
+			name = "Wall Street Journal";
+			sourceTree = "<group>";
+		};
 		EBA0B9CA1DF6223C00F69C4A = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +87,23 @@
 		EBA0B9D51DF6223D00F69C4A /* ProjectTwoKellyMcNevin */ = {
 			isa = PBXGroup;
 			children = (
+				EB3461B11DF8979B007750AF /* Wall Street Journal */,
 				EBA0B9D61DF6223D00F69C4A /* AppDelegate.swift */,
-				EBA0B9D81DF6223D00F69C4A /* ViewController.swift */,
+				EBA0B9E81DF6237500F69C4A /* MainViewController.swift */,
 				EBA0B9DA1DF6223D00F69C4A /* Main.storyboard */,
 				EBA0B9DD1DF6223D00F69C4A /* Assets.xcassets */,
 				EBA0B9DF1DF6223D00F69C4A /* LaunchScreen.storyboard */,
 				EBA0B9E21DF6223D00F69C4A /* Info.plist */,
+				EBBEE7B71DF64E7B009CB3EF /* Categories.swift */,
+				EBBEE7B51DF64380009CB3EF /* ImageFetch.swift */,
+				EBBEE7AF1DF6291C009CB3EF /* FindArticle.swift */,
+				EBBEE7AD1DF62911009CB3EF /* DataModel.swift */,
+				EBBEE7BB1DF71967009CB3EF /* SecondViewController.swift */,
+				EB3461AF1DF8951E007750AF /* HomeViewController.swift */,
+				EB3FF65B1DF9CCB300623867 /* NewsSources.swift */,
+				EB78A5491DFA2DD10058624C /* SourceTitleTableViewCell.swift */,
+				EB78A54A1DFA2DD10058624C /* SourceTitleViewController.swift */,
+				EB3FF65D1DF9D07500623867 /* APIClient.swift */,
 			);
 			path = ProjectTwoKellyMcNevin;
 			sourceTree = "<group>";
@@ -136,8 +180,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBA0B9D91DF6223D00F69C4A /* ViewController.swift in Sources */,
+				EBBEE7BC1DF71967009CB3EF /* SecondViewController.swift in Sources */,
+				EB3FF65E1DF9D07500623867 /* APIClient.swift in Sources */,
+				EBBEE7B61DF64380009CB3EF /* ImageFetch.swift in Sources */,
+				EB3FF65C1DF9CCB300623867 /* NewsSources.swift in Sources */,
+				EBBEE7B81DF64E7B009CB3EF /* Categories.swift in Sources */,
 				EBA0B9D71DF6223D00F69C4A /* AppDelegate.swift in Sources */,
+				EBBEE7AE1DF62911009CB3EF /* DataModel.swift in Sources */,
+				EB3461B01DF8951E007750AF /* HomeViewController.swift in Sources */,
+				EB3461B31DF89820007750AF /* WSJAPIClient.swift in Sources */,
+				EBBEE7AC1DF62856009CB3EF /* DataTableViewCell.swift in Sources */,
+				EBA0B9E91DF6237500F69C4A /* MainViewController.swift in Sources */,
+				EBBEE7B01DF6291C009CB3EF /* FindArticle.swift in Sources */,
+				EB78A54B1DFA2DD10058624C /* SourceTitleTableViewCell.swift in Sources */,
+				EB78A54C1DFA2DD10058624C /* SourceTitleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +355,7 @@
 				EBA0B9E71DF6223D00F69C4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
