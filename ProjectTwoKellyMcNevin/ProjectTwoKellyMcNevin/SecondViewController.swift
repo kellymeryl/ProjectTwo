@@ -10,6 +10,8 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    var source: String = "the-wall-street-journal"
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     let leftMenuWidth:CGFloat = 200
@@ -22,15 +24,18 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         
         // Tab bar controller's child pages have a top-left button toggles the menu
-        NotificationCenter.default.addObserver(self, selector: "toggleMenu", name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SecondViewController.toggleMenu), name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: "closeMenuViaNotification", name: NSNotification.Name(rawValue: "closeMenuViaNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SecondViewController.closeMenuViaNotification), name: NSNotification.Name(rawValue: "closeMenuViaNotification"), object: nil)
         
         // Close the menu when the device rotates
-        NotificationCenter.default.addObserver(self, selector: "rotated", name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SecondViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         // LeftMenu sends openModalWindow
-        NotificationCenter.default.addObserver(self, selector: "openModalWindow", name: NSNotification.Name(rawValue: "openModalWindow"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SecondViewController.openModalWindow), name: NSNotification.Name(rawValue: "openModalWindow"), object: nil)
+        
+        
+        
         
     }
     
@@ -44,7 +49,9 @@ class SecondViewController: UIViewController {
     }
     
     func toggleMenu(){
+        
         scrollView.contentOffset.x == 0  ? closeMenu() : openMenu()
+        
     }
     
     // This wrapper function is necessary because
@@ -62,6 +69,7 @@ class SecondViewController: UIViewController {
     func openMenu(){
         print("opening menu")
         scrollView.setContentOffset(CGPoint(x: 0, y: -65), animated: false)
+        
     }
     
     // see http://stackoverflow.com/questions/25666269/ios8-swift-how-to-detect-orientation-change
@@ -74,6 +82,24 @@ class SecondViewController: UIViewController {
                 self.closeMenu()
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "EmbedMain" {
+            
+            let mainViewControllerItem = segue.destination as! MainViewController
+            mainViewControllerItem.selectedSource = source
+        }
+        
+        // TODO: set prperty for menuViewController
+        
+       else if segue.identifier == "EmbedinMenu"
+        {
+            let menuViewController = segue.destination as! SourceTitleViewController
+            menuViewController.selectedSource = source
+        }
+        //menuViewController.
     }
     
 }

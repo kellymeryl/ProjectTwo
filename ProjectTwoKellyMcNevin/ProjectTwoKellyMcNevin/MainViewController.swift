@@ -17,6 +17,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedIndex: Int?
     var articleTypeName: String?
     
+   // var mainViewControllerItem: MainViewController
+    
     let client = APIClient()
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
@@ -28,7 +30,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var spaceButton: UIBarButtonItem!
     
-    
+    var selectedSource: String?
     @IBAction func doneButtonWasTapped(_ sender: Any) {
         
         categoryPickerView.isHidden = true
@@ -68,17 +70,24 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func loadTableViewURLFromBar() {
+    func loadTableViewURLFromBar(source: String?) {
         
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
+            if self.filteredResults != nil {
+                if let filteredArt = responseArticles {
+                    self.articles = filteredArt
+                    self.dataTableView.reloadData()
+                }
+            }
+            
             if let art = responseArticles {
                 self.articles = art
-     //           self.dataTableView.reloadData()
+                self.dataTableView.reloadData()
             }
         }
-        client.getData(newsSource: articleTypeName!, category: .general, completion: articleFetchCompletion)
+        client.getData(newsSource: source!, category: .general, completion: articleFetchCompletion)
         
     }
     
@@ -93,25 +102,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toolBar.isUserInteractionEnabled = false
         categoryPickerView.isHidden = true
     
-        let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
-            print("Articles delivered to View Controller")
-            
-            if let filteredResults = self.filteredResults {
-                if let filteredArt = responseArticles {
-                    self.articles = filteredArt
-                    self.dataTableView.reloadData()
-                }
-            }
-            else {
-                if let art = responseArticles {
-                    self.articles = art
-                    self.dataTableView.reloadData()
-                    print(self.dataTableView)
-                }
-            }
-            
-        }
-        client.getData(completion: articleFetchCompletion)
+        loadTableViewURLFromBar(source: selectedSource)
         
     }
     
