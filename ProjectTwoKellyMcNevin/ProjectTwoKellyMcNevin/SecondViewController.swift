@@ -21,9 +21,6 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        // Initially close menu programmatically.  This needs to be done on the main thread initially in order to work.
-          //  self.closeMenu(animated: false)
-        
         // Tab bar controller's child pages have a top-left button toggles the menu
         NotificationCenter.default.addObserver(self, selector: "toggleMenu", name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
         
@@ -103,11 +100,11 @@ extension SecondViewController : UIScrollViewDelegate {
     // 3. disable paging altogether.  works, but at the loss of a feature
     // 4. nest the scrollview inside UIView, so UIKit doesn't mess with it.  may have worked before,
     //    but not anymore.
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+  /*  func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         scrollView.isPagingEnabled = true
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         scrollView.isPagingEnabled = false
-    }
+    }*/
 }

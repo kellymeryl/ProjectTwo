@@ -32,6 +32,7 @@ class SourceTitleViewController: UIViewController, UITableViewDataSource, UITabl
         cell.sourceTitleLabel.text = titleName.title
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath) as! SourceTitleTableViewCell
@@ -45,12 +46,21 @@ class SourceTitleViewController: UIViewController, UITableViewDataSource, UITabl
             selectedCell?.backgroundColor = UIColor.white
             selectedCell = cell
         }
+        
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let MainViewController = segue.destination as! MainViewController
+            MainViewController.selectedIndex = newsTitleTableView.indexPathForSelectedRow?.row
+        }
+        
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
+       
+        
+        
+           // print(newsSourceName)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let MainViewController = segue.destination as! MainViewController
-        MainViewController.selectedIndex = newsTitleTableView.indexPathForSelectedRow?.row
-    }
+   
+ 
     
     
     override func didReceiveMemoryWarning() {

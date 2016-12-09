@@ -76,7 +76,33 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toolBar.isUserInteractionEnabled = false
         categoryPickerView.isHidden = true
     
+
+        if selectedCell != nil {
+            
+            let newsSourceName = arrayOfTitles[selectedIndex!].title
+            
+            let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
+                print("Articles delivered to View Controller")
+                
+                if let filteredResults = self.filteredResults {
+                    if let filteredArt = responseArticles {
+                        self.articles = filteredArt
+                        self.dataTableView.reloadData()
+                    }
+                }
+                else {
+                    if let art = responseArticles {
+                        self.articles = art
+                        self.dataTableView.reloadData()
+                    }
+                }
+                
+            }
+            client.getData(newsSource: newsSourceName, completion: articleFetchCompletion)
+            
+        }
     
+        else {
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
@@ -95,6 +121,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
         client.getData(completion: articleFetchCompletion)
+    }
     }
     
     
