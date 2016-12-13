@@ -13,7 +13,8 @@ class BackgroundScrollViewViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     let leftMenuWidth:CGFloat = 200
-    var x = 1
+    var counter1 = 1
+    var counter2 = 1
     //creates an instance of mainviewcontroller
     var mainViewController: MainViewController?
     
@@ -23,19 +24,26 @@ class BackgroundScrollViewViewController: UIViewController {
     @IBOutlet weak var searchButton: UIBarButtonItem!
     
     @IBAction func menuButtonWasTapped(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
-        searchButton.isEnabled = false
+        if counter2 % 2 == 0 {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
+            searchButton.isEnabled = true
+        }
+        else if counter2 % 2 != 0 {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
+            searchButton.isEnabled = false
+        }
+        counter2 += 1
     }
     
     @IBAction func searchMenuButtonWasTapped(_ sender: Any) {
         
-        if x % 2 == 0{
+        if counter1 % 2 == 0{
             mainViewController?.searchBar.isHidden = true
         }
-        else if x % 2 != 0 {
+        else if counter1 % 2 != 0 {
             mainViewController?.searchBar.isHidden = false
         }
-        x += 1
+        counter1 += 1
     }
     override func viewDidLoad() {
         
