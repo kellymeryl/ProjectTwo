@@ -13,18 +13,30 @@ class BackgroundScrollViewViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     let leftMenuWidth:CGFloat = 200
-    
+    var x = 1
     //creates an instance of mainviewcontroller
     var mainViewController: MainViewController?
     
     //creates instance of sildermenuviewcontroller
     var menuViewController: SliderMenuViewController?
 
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     
     @IBAction func menuButtonWasTapped(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
+        searchButton.isEnabled = false
     }
     
+    @IBAction func searchMenuButtonWasTapped(_ sender: Any) {
+        
+        if x % 2 == 0{
+            mainViewController?.searchBar.isHidden = true
+        }
+        else if x % 2 != 0 {
+            mainViewController?.searchBar.isHidden = false
+        }
+        x += 1
+    }
     override func viewDidLoad() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(BackgroundScrollViewViewController.toggleMenu), name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
@@ -34,10 +46,6 @@ class BackgroundScrollViewViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(BackgroundScrollViewViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(BackgroundScrollViewViewController.openModalWindow), name: NSNotification.Name(rawValue: "openModalWindow"), object: nil)
-        
-        
-        
-        
     }
     
     deinit {
@@ -61,13 +69,10 @@ class BackgroundScrollViewViewController: UIViewController {
         }
     }
     
-    // This wrapper function is necessary because
-    // closeMenu params do not match up with Notification
     func closeMenuViaNotification(){
         closeMenu()
     }
     
-    // Use scrollview content offset-x to slide the menu.
     func closeMenu(animated:Bool = true){
         scrollView.setContentOffset(CGPoint(x: -leftMenuWidth, y: -65), animated: animated)
     }

@@ -103,6 +103,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        searchBar.isHidden = true
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
         toolBar.isHidden = true
