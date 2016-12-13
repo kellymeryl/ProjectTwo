@@ -12,6 +12,8 @@ import SafariServices
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var articles = [Article]()
+    var searchResults = [Article]()
+    var searchAllArticles = [Article]()
     var filteredResults: [Article]?
     
     var selectedIndex: Int?
@@ -20,6 +22,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
    // var mainViewControllerItem: MainViewController
     
     let client = APIClient()
+    //let sourcesClient = SearchAll()
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
     
@@ -31,6 +34,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var spaceButton: UIBarButtonItem!
     
     var selectedSource: String = "the-wall-street-journal"
+    var sourcesArray = [String?]()
+    
     @IBAction func doneButtonWasTapped(_ sender: Any) {
         
         categoryPickerView.isHidden = true
@@ -84,17 +89,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if let art = responseArticles {
                 self.articles = art
+    
                 self.dataTableView.reloadData()
             }
         }
-        client.getData(newsSource: selectedSource, category: .general, completion: articleFetchCompletion)
         
-    }
-    
+        client.getData(newsSource: selectedSource, category: .general, completion: articleFetchCompletion)
+        }
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
@@ -103,7 +108,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         categoryPickerView.isHidden = true
     
         loadTableViewURLFromBar()
-        
+    //    sourcesClient.searchALl()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int

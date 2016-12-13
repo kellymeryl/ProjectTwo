@@ -35,6 +35,8 @@ class NewsSourceTitle {
     }
 }
 
+var arrayOfArticlesForSearch = [Article]()
+
 var arrayOfTitles: [NewsSourceTitle] = [
     NewsSourceTitle(title: "Financial Times"),
     NewsSourceTitle(title: "Bloomberg News"),
@@ -43,5 +45,5 @@ var arrayOfTitles: [NewsSourceTitle] = [
     NewsSourceTitle(title: "USA Today"),
     NewsSourceTitle(title: "CNN"),
     NewsSourceTitle(title: "The Wall Street Journal"),
-    NewsSourceTitle(title: "Search All")
 ]
+

@@ -372,7 +372,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G5m-Fx-YIO">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
+                                <rect key="frame" x="0.0" y="42" width="200" height="625"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SourceTitleTableViewCell" rowHeight="91" id="SSw-0J-wZq" customClass="SourceTitleTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
@@ -402,12 +402,21 @@
                                     <outlet property="delegate" destination="2y1-Mc-N5b" id="z3D-kl-xnX"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRo-gp-0SM">
+                                <rect key="frame" x="0.0" y="-4" width="200" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Search All"/>
+                                <connections>
+                                    <action selector="searchButtonWasTapped:" destination="2y1-Mc-N5b" eventType="touchUpInside" id="NGO-fj-JfT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="G5m-Fx-YIO" secondAttribute="trailing" id="EzE-nd-SZV"/>
                             <constraint firstItem="G5m-Fx-YIO" firstAttribute="leading" secondItem="cKS-r7-2me" secondAttribute="leading" id="ZDG-Dg-kCc"/>
-                            <constraint firstItem="G5m-Fx-YIO" firstAttribute="top" secondItem="kak-oS-fAf" secondAttribute="bottom" id="g7C-hM-2ko"/>
+                            <constraint firstItem="G5m-Fx-YIO" firstAttribute="top" secondItem="kak-oS-fAf" secondAttribute="bottom" constant="42" id="g7C-hM-2ko"/>
                             <constraint firstItem="3Ar-vr-NeY" firstAttribute="top" secondItem="G5m-Fx-YIO" secondAttribute="bottom" id="nhh-uJ-GBv"/>
                         </constraints>
                     </view>
@@ -417,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1W5-e8-NTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-690" y="-449"/>
+            <point key="canvasLocation" x="-691.20000000000005" y="-449.32533733133437"/>
         </scene>
     </scenes>
 </document>

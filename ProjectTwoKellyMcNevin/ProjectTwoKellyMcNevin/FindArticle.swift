@@ -53,7 +53,7 @@ enum Source: String {
     case usaToday = "usa-today"
     case cnn = "cnn"
     case wallStreetJournal = "the-wall-street-journal"
-    case searchAll = "search all"
+ //   case searchAll = "search-all"
     
     var displayValue: String {
         switch self{
@@ -71,8 +71,8 @@ enum Source: String {
             return "CNN"
         case .wallStreetJournal:
             return "the-wall-street-journal"
-        case .searchAll:
-            return "Search all"
+      //  case .searchAll:
+       //     return "Search all"
         }
         
     }
