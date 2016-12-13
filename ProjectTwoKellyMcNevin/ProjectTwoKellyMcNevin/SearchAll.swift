@@ -23,7 +23,6 @@ class SearchAllAPIClient {
         for sourceOfArticle in self.sourcesArray {
             
             let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
-                print("Articles delivered to View Controller")
                 
                 if let art = responseArticles {
                     self.allArticles = art
@@ -32,6 +31,7 @@ class SearchAllAPIClient {
                 }
             }
             apiClient.getData(newsSource: sourceOfArticle, category: .general, completion: articleFetchCompletion)
+            print(sourceOfArticle)
             allSearchedArticles += (allArticles)
         }
         print(allSearchedArticles.count)
