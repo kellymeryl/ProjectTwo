@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
+//API Client class getsData from API Call & does JSON Parsing.
 class APIClient{
     
-    //var sourcesArray = ["the-wall-street-journal", "business-insider", "the-economist", "cnn", "usa-today", "bloomberg-news", "financial-times"]
     
     
     func getData(newsSource:  String = "the-wall-street-journal", category: Category = .general, completion: @escaping ([Article]?) -> ()) {
@@ -37,8 +37,6 @@ class APIClient{
             task.resume()
         }
     }
-
-
     
     func getArticles(_ json: [String: Any]) -> [Article] {
         let listOfArticles = json["articles"] as! [[String: Any]]

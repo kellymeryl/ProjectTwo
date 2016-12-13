@@ -8,15 +8,17 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class BackgroundScrollViewViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
     let leftMenuWidth:CGFloat = 200
     
-    
+    //creates an instance of mainviewcontroller
     var mainViewController: MainViewController?
-    var menuViewController: SourceTitleViewController?
+    
+    //creates instance of sildermenuviewcontroller
+    var menuViewController: SliderMenuViewController?
 
     
     @IBAction func menuButtonWasTapped(_ sender: Any) {
@@ -25,23 +27,19 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        // Tab bar controller's child pages have a top-left button toggles the menu
-        NotificationCenter.default.addObserver(self, selector: #selector(SecondViewController.toggleMenu), name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BackgroundScrollViewViewController.toggleMenu), name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SecondViewController.closeMenuViaNotification), name: NSNotification.Name(rawValue: "closeMenuViaNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BackgroundScrollViewViewController.closeMenuViaNotification), name: NSNotification.Name(rawValue: "closeMenuViaNotification"), object: nil)
         
-        // Close the menu when the device rotates
-        NotificationCenter.default.addObserver(self, selector: #selector(SecondViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BackgroundScrollViewViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
-        // LeftMenu sends openModalWindow
-        NotificationCenter.default.addObserver(self, selector: #selector(SecondViewController.openModalWindow), name: NSNotification.Name(rawValue: "openModalWindow"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BackgroundScrollViewViewController.openModalWindow), name: NSNotification.Name(rawValue: "openModalWindow"), object: nil)
         
         
         
         
     }
     
-    // Cleanup notifications added in viewDidLoad
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -102,10 +100,9 @@ class SecondViewController: UIViewController {
             }
         }
          
-        // TODO: fix
        else if segue.identifier == "EmbedToMenu"
         {
-            if let menu = segue.destination as? SourceTitleViewController {
+            if let menu = segue.destination as? SliderMenuViewController {
                 menuViewController = menu
             }
         }
@@ -113,33 +110,9 @@ class SecondViewController: UIViewController {
     
 }
 
-extension SecondViewController : UIScrollViewDelegate {
+extension BackgroundScrollViewViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("scrollView.contentOffset.x:: \(scrollView.contentOffset.x)")
     }
     
-    // http://www.4byte.cn/question/49110/uiscrollview-change-contentoffset-when-change-frame.html
-    // When paging is enabled on a Scroll View,
-    // a private method _adjustContentOffsetIfNecessary gets called,
-    // presumably when present whatever controller is called.
-    // The idea is to disable paging.
-    // But we rely on paging to snap the slideout menu in place
-    // (if you're relying on the built-in pan gesture).
-    // So the approach is to keep paging disabled.
-    // But enable it at the last minute during scrollViewWillBeginDragging.
-    // And then turn it off once the scroll view stops moving.
-    //
-    // Approaches that don't work:
-    // 1. automaticallyAdjustsScrollViewInsets -- don't bother
-    // 2. overriding _adjustContentOffsetIfNecessary -- messing with private methods is a bad idea
-    // 3. disable paging altogether.  works, but at the loss of a feature
-    // 4. nest the scrollview inside UIView, so UIKit doesn't mess with it.  may have worked before,
-    //    but not anymore.
-  /*  func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        scrollView.isPagingEnabled = true
-    }
-    
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        scrollView.isPagingEnabled = false
-    }*/
 }

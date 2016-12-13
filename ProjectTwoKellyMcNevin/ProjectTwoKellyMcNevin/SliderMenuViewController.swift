@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SourceTitleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SliderMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var newsTitleTableView: UITableView!
         
-    var selectedCell: SourceTitleTableViewCell?
+    var selectedCell: MenuTableViewCell?
     var selectedListIndex: Int?
     
     var source: String?
@@ -57,15 +57,15 @@ class SourceTitleViewController: UIViewController, UITableViewDataSource, UITabl
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SourceTitleTableViewCell", for: indexPath) as! SourceTitleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         let titleName = arrayOfTitles[indexPath.row]
-        cell.sourceTitleLabel.text = titleName.title
+        cell.menuLabel.text = titleName.title
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath) as! SourceTitleTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
         let titleName = arrayOfTitles[indexPath.row]
         
         source = Source.asArray2()[indexPath.row].rawValue
