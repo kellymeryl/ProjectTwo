@@ -19,10 +19,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedIndex: Int?
     var articleTypeName: String?
     
-   // var mainViewControllerItem: MainViewController
     
     let client = APIClient()
-    //let sourcesClient = SearchAll()
+
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
     
@@ -43,6 +42,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toolBar.isUserInteractionEnabled = false
     }
     
+    //Shows the picker view & toolbar 
     @IBAction func browseButtonWasTapped(_ sender: Any) {
         categoryPickerView.isHidden = false
         toolBar.isHidden = false
@@ -54,6 +54,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedCell: DataTableViewCell?
     var selectedListIndex: Int?
     
+    //Filters the search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         
         if searchText != "" {
@@ -75,6 +76,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    //Function that calls API based on selectedSource in slider menu
     func loadTableViewURLFromBar() {
         
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
@@ -99,8 +101,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
         toolBar.isHidden = true
@@ -108,9 +110,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         categoryPickerView.isHidden = true
     
         loadTableViewURLFromBar()
-    //    sourcesClient.searchALl()
     }
     
+    //Implementing TABLE VIEW ------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if let filteredResults = filteredResults {
@@ -172,6 +174,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             selectedCell = cell
         }
     }
+    
     //IMPLEMENTING PICKER VIEW---------------------------------------------------------------------------
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -209,10 +212,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
         }
-        
-        
         client.getData(category: category, completion: articleFetchCompletion)
-        
     }
     
     override func didReceiveMemoryWarning() {

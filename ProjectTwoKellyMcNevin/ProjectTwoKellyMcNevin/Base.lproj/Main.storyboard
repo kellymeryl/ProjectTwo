@@ -78,6 +78,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YBX-iY-77Q">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="7lC-Uh-ewJ"/>
                         <barButtonItem key="rightBarButtonItem" title="Menu" id="a2S-ID-702">
                             <connections>
                                 <action selector="menuButtonWasTapped:" destination="SGx-w0-0to" id="GnX-MJ-vpL"/>

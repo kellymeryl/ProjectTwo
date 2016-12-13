@@ -16,12 +16,10 @@ class SliderMenuViewController: UIViewController, UITableViewDataSource, UITable
     var selectedListIndex: Int?
     
     var source: String?
-    var searchAllArticles = [Article]()
     var selectedSource: String?
+    
     var client = SearchAllAPIClient()
-   // var source: String?
 
-   // var sourcesArray = ["the-wall-street-journal", "business-insider", "the-economist", "cnn", "usa-today", "bloomberg-news", "financial-times"]
     var sourcesArray = [String?]()
 
 
@@ -30,25 +28,17 @@ class SliderMenuViewController: UIViewController, UITableViewDataSource, UITable
         newsTitleTableView.reloadData()
     }
     
+    //Search All Function
     @IBAction func searchButtonWasTapped(_ sender: Any) {
         
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
-        
-        //Run getall data function
-        //run search all function that loops through all sources, makes new array of articles which is new closure
-        //self.articles = art --> articles in searchArray = art
-        //repopulate table view
-        //redefine articles
-        
-    
         client.searchAll()
         
     }
+
     
-
-
-    //CREATE TABLE VIEW
+//CREATE TABLE VIEW---------------------------------------------
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -69,7 +59,6 @@ class SliderMenuViewController: UIViewController, UITableViewDataSource, UITable
         let titleName = arrayOfTitles[indexPath.row]
         
         source = Source.asArray2()[indexPath.row].rawValue
-      //  print(source)
         
         if cell === selectedCell {
             cell.backgroundColor = UIColor.white
@@ -93,12 +82,8 @@ class SliderMenuViewController: UIViewController, UITableViewDataSource, UITable
        
     }
    
- 
-    
-    
-    override func didReceiveMemoryWarning() {
+     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
