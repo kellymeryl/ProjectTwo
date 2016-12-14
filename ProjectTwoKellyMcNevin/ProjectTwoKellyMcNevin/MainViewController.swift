@@ -95,8 +95,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if let art = responseArticles {
                 self.articles = art
-    
-                self.dataTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.dataTableView.reloadData()
+                }
             }
         }
         
@@ -110,6 +111,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         client.getData(newsSource: selectedSource, category: .general, completion: articleFetchCompletion)
         }
     }
+
     
     
     override func viewDidLoad() {
@@ -125,7 +127,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         loadTableViewURLFromBar()
     }
     
-    //Implementing TABLE VIEW ------------------------------------------
+      //Implementing TABLE VIEW ------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if let filteredResults = filteredResults {
