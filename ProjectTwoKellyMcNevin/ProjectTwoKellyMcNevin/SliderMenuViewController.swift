@@ -18,7 +18,6 @@ class SliderMenuViewController: UIViewController, UITableViewDataSource, UITable
     var source: String?
     var selectedSource: String?
     
-    var client = SearchAllAPIClient()
 
     var sourcesArray = [String?]()
 
@@ -30,11 +29,9 @@ class SliderMenuViewController: UIViewController, UITableViewDataSource, UITable
     
     //Search All Function
     @IBAction func searchButtonWasTapped(_ sender: Any) {
-        
-        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
-        client.searchAll()
-        
+        selectedSource = "search all"
+    
     }
 
     

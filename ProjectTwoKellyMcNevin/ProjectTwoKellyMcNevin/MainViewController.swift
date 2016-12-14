@@ -79,6 +79,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //Function that calls API based on selectedSource in slider menu
     func loadTableViewURLFromBar() {
         
+        //todo if selectedSource is source all SearchAll and use the same articleFetchCompletion
+        
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
@@ -96,9 +98,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         
-        client.getData(newsSource: selectedSource, category: .general, completion: articleFetchCompletion)
+        if selectedSource == "search all" {
+            
+            client.searchAll(completion: articleFetchCompletion)
         }
-        
+        else {
+            client.getData(newsSource: selectedSource, category: .general, completion: articleFetchCompletion)
+        }
+    }
+    
     
     override func viewDidLoad() {
         

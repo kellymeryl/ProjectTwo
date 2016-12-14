@@ -39,6 +39,7 @@ class APIClient{
     }
     
     func getArticles(_ json: [String: Any]) -> [Article] {
+        
         let listOfArticles = json["articles"] as! [[String: Any]]
         
         var articles = [Article]()
@@ -55,5 +56,34 @@ class APIClient{
         return articles
         
     }
+    var sourcesArray = ["the-wall-street-journal", "business-insider", "the-economist", "cnn", "usa-today", "bloomberg-news", "financial-times"]
+    
+    
+    func searchAll(completion: ([Article])->()) {
+        
+        var articles = [Article]()
+        var allArticles = [Article]()
+        let articleSemaphore = DispatchSemaphore(value: 134523)
+        
+        for sourceOfArticle in self.sourcesArray {
+            
+            let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
+                
+                if let art = responseArticles {
+                    articles = art
+                    allArticles.append(contentsOf: articles)
+                }
+                articleSemaphore.signal()
+            }
+            getData(newsSource: sourceOfArticle, category: .general, completion: articleFetchCompletion)
+          //  print(sourceOfArticle)
+          //  allSearchedArticles.append(contentsOf: articles)
+         //   allArticles.append(contentsOf: articles)
+            articleSemaphore.wait()
+        }
+        print(articles.count)
+        completion(articles)
+    }
+
 }
 

@@ -71,9 +71,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TuH-yT-b3V" firstAttribute="height" secondItem="uLq-Tf-Gsz" secondAttribute="height" id="7Wg-WE-YRP"/>
                             <constraint firstItem="TuH-yT-b3V" firstAttribute="top" secondItem="uLq-Tf-Gsz" secondAttribute="top" id="Clz-Y9-wu3"/>
+                            <constraint firstItem="TuH-yT-b3V" firstAttribute="centerX" secondItem="uLq-Tf-Gsz" secondAttribute="centerX" id="LfS-1b-zic"/>
                             <constraint firstItem="TuH-yT-b3V" firstAttribute="leading" secondItem="uLq-Tf-Gsz" secondAttribute="leading" id="PDn-7p-koj"/>
                             <constraint firstAttribute="trailing" secondItem="TuH-yT-b3V" secondAttribute="trailing" id="WcR-VS-agx"/>
+                            <constraint firstItem="TuH-yT-b3V" firstAttribute="width" secondItem="uLq-Tf-Gsz" secondAttribute="width" id="XnO-It-gnw"/>
+                            <constraint firstItem="TuH-yT-b3V" firstAttribute="centerY" secondItem="uLq-Tf-Gsz" secondAttribute="centerY" id="fsu-Cd-kF2"/>
                             <constraint firstItem="QVf-jv-nQw" firstAttribute="top" secondItem="TuH-yT-b3V" secondAttribute="bottom" id="gbC-Pu-yDe"/>
                         </constraints>
                     </view>
