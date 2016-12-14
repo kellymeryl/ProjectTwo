@@ -15,30 +15,32 @@ class SearchAllAPIClient {
     
     var apiClient = APIClient()
     var allArticles = [Article]()
-
+    
     var sourcesArray = ["the-wall-street-journal", "business-insider", "the-economist", "cnn", "usa-today", "bloomberg-news", "financial-times"]
     
     
     func searchAll() {
+        let articleSemaphore = DispatchSemaphore(value: 134523)
+        
         for sourceOfArticle in self.sourcesArray {
-            
-            var 
             
             let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
                 
                 if let art = responseArticles {
-                    self.allArticles = art
-                    print(art)
-                    print(self.allArticles.count)
+                    self.allArticles.append(contentsOf: art)
                 }
+                articleSemaphore.signal()
             }
             apiClient.getData(newsSource: sourceOfArticle, category: .general, completion: articleFetchCompletion)
             print(sourceOfArticle)
-            allSearchedArticles += (allArticles)
+            
+            print(allArticles.count)
+            
+            articleSemaphore.wait()
         }
-        print(allSearchedArticles.count)
     }
 }
+
 
 
 
