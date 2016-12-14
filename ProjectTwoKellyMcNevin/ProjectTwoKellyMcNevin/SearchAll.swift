@@ -22,6 +22,8 @@ class SearchAllAPIClient {
     func searchAll() {
         for sourceOfArticle in self.sourcesArray {
             
+            var 
+            
             let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
                 
                 if let art = responseArticles {
