@@ -75,8 +75,9 @@ class APIClient{
                 }
                 articleSemaphore.signal()
             }
-            getData(newsSource: sourceOfArticle, category: .general, completion: articleFetchCompletion)
-          //  print(sourceOfArticle)
+        
+            self.getData(newsSource: sourceOfArticle, category: .general, completion: articleFetchCompletion)
+            print(sourceOfArticle)
           //  allSearchedArticles.append(contentsOf: articles)
          //   allArticles.append(contentsOf: articles)
             articleSemaphore.wait()

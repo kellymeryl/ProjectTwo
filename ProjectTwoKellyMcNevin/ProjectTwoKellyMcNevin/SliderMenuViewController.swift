@@ -29,8 +29,8 @@ class SliderMenuViewController: UIViewController, UITableViewDataSource, UITable
     
     //Search All Function
     @IBAction func searchButtonWasTapped(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
         selectedSource = "search all"
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
     
     }
 

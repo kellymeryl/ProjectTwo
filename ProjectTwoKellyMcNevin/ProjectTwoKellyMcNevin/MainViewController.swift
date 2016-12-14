@@ -18,7 +18,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var selectedIndex: Int?
     var articleTypeName: String?
+    var allArticles = [Article]()
     
+    var sourcesArray = ["the-wall-street-journal", "business-insider", "the-economist", "cnn", "usa-today", "bloomberg-news", "financial-times"]
     
     let client = APIClient()
 
@@ -33,7 +35,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var spaceButton: UIBarButtonItem!
     
     var selectedSource: String = "the-wall-street-journal"
-    var sourcesArray = [String?]()
+    //var sourcesArray = [String?]()
     
     @IBAction func doneButtonWasTapped(_ sender: Any) {
         
@@ -98,12 +100,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         
-        if selectedSource == "search all" {
+    
+    if selectedSource == "search all" {
             
-            client.searchAll(completion: articleFetchCompletion)
-        }
-        else {
-            client.getData(newsSource: selectedSource, category: .general, completion: articleFetchCompletion)
+        client.searchAll(completion: articleFetchCompletion)
+ 
+    }
+    else {
+        client.getData(newsSource: selectedSource, category: .general, completion: articleFetchCompletion)
         }
     }
     
@@ -117,7 +121,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toolBar.isHidden = true
         toolBar.isUserInteractionEnabled = false
         categoryPickerView.isHidden = true
-    
+        
         loadTableViewURLFromBar()
     }
     
