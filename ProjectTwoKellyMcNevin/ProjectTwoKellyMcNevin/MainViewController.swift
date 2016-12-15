@@ -18,12 +18,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var selectedIndex: Int?
     var articleTypeName: String?
+    var resultSearchController = UISearchController()
+
     var allArticles = [Article]()
     
     var sourcesArray = ["the-wall-street-journal", "business-insider", "the-economist", "cnn", "usa-today", "bloomberg-news", "financial-times"]
     
     let client = APIClient()
 
+    
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
     
@@ -78,6 +81,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+       
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    
     //Function that calls API based on selectedSource in slider menu
     func loadTableViewURLFromBar() {
         
@@ -123,6 +138,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toolBar.isHidden = true
         toolBar.isUserInteractionEnabled = false
         categoryPickerView.isHidden = true
+        
+        self.resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            
+            self.tableView.tableHeaderView = controller.searchBar
+            
+            return controller
+        })()
+        
         
         loadTableViewURLFromBar()
     }
