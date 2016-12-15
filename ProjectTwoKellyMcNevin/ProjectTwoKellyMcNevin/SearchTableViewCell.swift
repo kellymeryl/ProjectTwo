@@ -14,6 +14,14 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var searchTitleLabel: UILabel!
     @IBOutlet weak var searchDescriptionView: UITextView!
     
+    
+    var searchArticleImageView: String?{
+        didSet{
+            searchArticleImageView.setImageWithURL(urlString: searchArticleImageView)
+        }
+    }
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

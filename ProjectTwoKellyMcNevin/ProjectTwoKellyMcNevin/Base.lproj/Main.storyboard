@@ -75,9 +75,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Fy-7Y-4sY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Fy-7Y-4sY">
+                                <rect key="frame" x="0.0" y="102" width="375" height="516"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchTableViewCell" rowHeight="95" id="hfB-CZ-WaN" customClass="SearchTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
@@ -88,7 +87,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9jF-IH-I97">
-                                                    <rect key="frame" x="19" y="21.5" width="60" height="52"/>
+                                                    <rect key="frame" x="19" y="22" width="60" height="52"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="9jF-IH-I97" secondAttribute="height" multiplier="15:13" id="CTz-Us-4ux"/>
                                                         <constraint firstAttribute="height" constant="52" id="TfB-kv-GUW"/>
@@ -127,8 +126,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7Fu-A5-U1k">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Fy-7Y-4sY" firstAttribute="bottom" secondItem="vYF-On-vIW" secondAttribute="top" id="1S9-2r-oj5"/>
+                            <constraint firstItem="vYF-On-vIW" firstAttribute="top" secondItem="7Fu-A5-U1k" secondAttribute="bottom" constant="510" id="A67-k6-KEd"/>
+                            <constraint firstItem="7Fu-A5-U1k" firstAttribute="width" secondItem="GJ0-md-Me3" secondAttribute="height" multiplier="375:667" id="Hwp-87-LKc"/>
+                            <constraint firstItem="4Fy-7Y-4sY" firstAttribute="centerX" secondItem="GJ0-md-Me3" secondAttribute="centerX" id="WMm-0h-sum"/>
+                            <constraint firstItem="7Fu-A5-U1k" firstAttribute="centerX" secondItem="GJ0-md-Me3" secondAttribute="centerX" id="hHh-Ko-Shv"/>
+                            <constraint firstItem="7Fu-A5-U1k" firstAttribute="width" secondItem="GJ0-md-Me3" secondAttribute="width" id="ldW-fo-A7q"/>
+                            <constraint firstItem="4Fy-7Y-4sY" firstAttribute="top" secondItem="7Fu-A5-U1k" secondAttribute="bottom" constant="-6" id="nB5-ew-vbq"/>
+                            <constraint firstItem="4Fy-7Y-4sY" firstAttribute="width" secondItem="GJ0-md-Me3" secondAttribute="width" id="uM8-BH-91W"/>
+                            <constraint firstItem="4Fy-7Y-4sY" firstAttribute="width" secondItem="GJ0-md-Me3" secondAttribute="height" multiplier="375:667" id="wCL-Ji-CBn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fr1-Ww-w1d">
                         <nil key="title"/>
@@ -136,14 +150,19 @@
                             <rect key="frame" x="113" y="6" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onE-Sj-9il">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onE-Sj-9il">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="33"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="onE-Sj-9il" firstAttribute="top" secondItem="zVa-XV-deO" secondAttribute="top" id="NU1-ew-QTy"/>
+                                <constraint firstAttribute="bottom" secondItem="onE-Sj-9il" secondAttribute="bottom" id="S5X-XO-UHJ"/>
+                                <constraint firstAttribute="trailing" secondItem="onE-Sj-9il" secondAttribute="trailing" id="mEQ-zW-bEZ"/>
+                                <constraint firstItem="onE-Sj-9il" firstAttribute="leading" secondItem="zVa-XV-deO" secondAttribute="leading" id="nwa-aC-NHE"/>
+                            </constraints>
                         </view>
                     </navigationItem>
                 </viewController>
