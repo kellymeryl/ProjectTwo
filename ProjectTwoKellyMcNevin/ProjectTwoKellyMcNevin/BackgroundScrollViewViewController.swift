@@ -22,15 +22,24 @@ class BackgroundScrollViewViewController: UIViewController {
     var menuViewController: SliderMenuViewController?
 
     @IBOutlet weak var searchButton: UIBarButtonItem!
-    
+
+
     @IBAction func menuButtonWasTapped(_ sender: Any) {
         if counter2 % 2 == 0 {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
             searchButton.isEnabled = true
+            mainViewController?.categoryPickerView.isHidden = true
+            mainViewController?.toolBar.isHidden = true
+            mainViewController?.toolBar.isUserInteractionEnabled = false
+
         }
         else if counter2 % 2 != 0 {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
             searchButton.isEnabled = false
+            mainViewController?.categoryPickerView.isHidden = true
+            mainViewController?.toolBar.isHidden = true
+            mainViewController?.toolBar.isUserInteractionEnabled = false
+
         }
         counter2 += 1
     }
@@ -38,12 +47,14 @@ class BackgroundScrollViewViewController: UIViewController {
     @IBAction func searchMenuButtonWasTapped(_ sender: Any) {
         
         if counter1 % 2 == 0{
-            mainViewController?.searchBar.isHidden = true
-        }
+            mainViewController?.categoryPickerView.isHidden = true
+                    }
         else if counter1 % 2 != 0 {
-            mainViewController?.searchBar.isHidden = false
+            mainViewController?.categoryPickerView.isHidden = false
         }
+        
         counter1 += 1
+        
     }
     override func viewDidLoad() {
         

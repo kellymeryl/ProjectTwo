@@ -19,6 +19,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedIndex: Int?
     var articleTypeName: String?
     var resultSearchController = UISearchController()
+    var selectedCell: DataTableViewCell?
 
     var allArticles = [Article]()
     
@@ -26,6 +27,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let client = APIClient()
 
+    @IBOutlet weak var toolBar: UIToolbar!
+    
+    @IBAction func cancelButtonWasTapped(_ sender: Any) {
+        toolBar.isHidden = true
+        toolBar.isUserInteractionEnabled = false
+        categoryPickerView.isHidden = true
+    }
     
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
@@ -34,29 +42,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var spaceButton: UIBarButtonItem!
-    
     var selectedSource: String = "the-wall-street-journal"
     //var sourcesArray = [String?]()
     
-    @IBAction func doneButtonWasTapped(_ sender: Any) {
-        
-        categoryPickerView.isHidden = true
-        toolBar.isHidden = true
-        toolBar.isUserInteractionEnabled = false
-    }
-    
-    //Shows the picker view & toolbar 
-    @IBAction func browseButtonWasTapped(_ sender: Any) {
-        categoryPickerView.isHidden = false
-        toolBar.isHidden = false
-        toolBar.isUserInteractionEnabled = true
-    }
+
     
     var pickerData = ["Business", "Entertainment", "Gaming", "General", "Music", "Science and Nature", "Sport", "Technology"]
     
-    var selectedCell: DataTableViewCell?
     var selectedListIndex: Int?
     
     //Filters the search bar
@@ -84,15 +76,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
        
         self.searchBar.showsCancelButton = true
+        self.searchBar.becomeFirstResponder()
     }
-    
+ 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
     
-    
+
     //Function that calls API based on selectedSource in slider menu
     func loadTableViewURLFromBar() {
         
@@ -132,13 +125,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        searchBar.isHidden = true
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
+        categoryPickerView.isHidden = true
         toolBar.isHidden = true
         toolBar.isUserInteractionEnabled = false
-        categoryPickerView.isHidden = true
-
         
         loadTableViewURLFromBar()
     }
