@@ -138,6 +138,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         toolBar.isHidden = true
         toolBar.isUserInteractionEnabled = false
         categoryPickerView.isHidden = true
+
         
         loadTableViewURLFromBar()
     }
