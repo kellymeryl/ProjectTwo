@@ -234,7 +234,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YBX-iY-77Q">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="7lC-Uh-ewJ">
+                        <barButtonItem key="leftBarButtonItem" title="Categories" id="7lC-Uh-ewJ">
                             <connections>
                                 <action selector="searchMenuButtonWasTapped:" destination="SGx-w0-0to" id="kBv-Kb-ZT0"/>
                             </connections>
