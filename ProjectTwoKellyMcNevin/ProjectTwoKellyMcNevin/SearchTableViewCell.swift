@@ -15,9 +15,9 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var searchDescriptionView: UITextView!
     
     
-    var searchArticleImageView: String?{
+    var searchArticleImageViewURL: String?{
         didSet{
-            searchArticleImageView.setImageWithURL(urlString: searchArticleImageView)
+            searchImageView.setImageWithURL(urlString: searchArticleImageViewURL)
         }
     }
 

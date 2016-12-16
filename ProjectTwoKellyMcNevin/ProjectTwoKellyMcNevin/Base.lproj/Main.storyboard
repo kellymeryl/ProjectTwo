@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="-3314" y="213"/>
         </scene>
-        <!--View Controller-->
+        <!--SearchViewController-->
         <scene sceneID="DDQ-vd-tRd">
             <objects>
-                <viewController id="5Io-o4-pbg" sceneMemberID="viewController">
+                <viewController title="SearchViewController" id="5Io-o4-pbg" customClass="SearchViewController" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Z2-D5-nWO"/>
                         <viewControllerLayoutGuide type="bottom" id="vYF-On-vIW"/>
@@ -76,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Fy-7Y-4sY">
-                                <rect key="frame" x="0.0" y="102" width="375" height="516"/>
+                                <rect key="frame" x="0.0" y="51" width="375" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchTableViewCell" rowHeight="95" id="hfB-CZ-WaN" customClass="SearchTableViewCell" customModule="ProjectTwoKellyMcNevin" customModuleProvider="target">
@@ -99,7 +99,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="46g-fy-Avt">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="46g-fy-Avt">
                                                     <rect key="frame" x="87" y="42" width="280" height="44"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -125,10 +125,17 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Io-o4-pbg" id="Q5Y-Wh-i38"/>
+                                    <outlet property="delegate" destination="5Io-o4-pbg" id="VOc-ch-QcG"/>
+                                </connections>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7Fu-A5-U1k">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5Io-o4-pbg" id="gzZ-ca-JqQ"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,7 +146,7 @@
                             <constraint firstItem="4Fy-7Y-4sY" firstAttribute="centerX" secondItem="GJ0-md-Me3" secondAttribute="centerX" id="WMm-0h-sum"/>
                             <constraint firstItem="7Fu-A5-U1k" firstAttribute="centerX" secondItem="GJ0-md-Me3" secondAttribute="centerX" id="hHh-Ko-Shv"/>
                             <constraint firstItem="7Fu-A5-U1k" firstAttribute="width" secondItem="GJ0-md-Me3" secondAttribute="width" id="ldW-fo-A7q"/>
-                            <constraint firstItem="4Fy-7Y-4sY" firstAttribute="top" secondItem="7Fu-A5-U1k" secondAttribute="bottom" constant="-6" id="nB5-ew-vbq"/>
+                            <constraint firstItem="4Fy-7Y-4sY" firstAttribute="top" secondItem="7Fu-A5-U1k" secondAttribute="bottom" constant="-57" id="nB5-ew-vbq"/>
                             <constraint firstItem="4Fy-7Y-4sY" firstAttribute="width" secondItem="GJ0-md-Me3" secondAttribute="width" id="uM8-BH-91W"/>
                             <constraint firstItem="4Fy-7Y-4sY" firstAttribute="width" secondItem="GJ0-md-Me3" secondAttribute="height" multiplier="375:667" id="wCL-Ji-CBn"/>
                         </constraints>
@@ -165,6 +172,10 @@
                             </constraints>
                         </view>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="7Fu-A5-U1k" id="bNH-B8-NKC"/>
+                        <outlet property="searchDataTableView" destination="4Fy-7Y-4sY" id="yVs-BI-Q73"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BL4-cw-gFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
