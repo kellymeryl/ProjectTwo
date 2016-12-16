@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import SafariServices
 
 class CategoryDisplayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -15,8 +17,9 @@ class CategoryDisplayViewController: UIViewController, UITableViewDataSource, UI
     
     var selectedIndex: Int?
     var articles = [Article]()
-    var selectedSource: CategoryViewTableViewCell?
+   // var selectedSource: CategoryViewTableViewCell?
     var client = APIClient()
+    var selectedCell: CategoryViewTableViewCell?
     
     func loadTableViewURLFromCategories() {
         
@@ -41,10 +44,46 @@ class CategoryDisplayViewController: UIViewController, UITableViewDataSource, UI
         loadTableViewURLFromCategories()
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return articles.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryViewTableViewCell", for: indexPath) as! CategoryViewTableViewCell
+            
+            let article = articles[indexPath.row]
+            cell.categoryArticleTitle.text = article.title
+            cell.categoryArticleDescription.text = article.description
+            cell.categoryArticleImageViewURL = article.urlToImage
+            return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! CategoryViewTableViewCell
+        
+        if cell === selectedCell {
+            cell.backgroundColor = UIColor.white
+            selectedCell = nil
+        }
+        else {
+            cell.backgroundColor = UIColor.lightGray
+            
+                let article = articles[indexPath.row]
+                let svc = SFSafariViewController(url: URL(string: article.urlToArticle)!)
+                print(article.urlToArticle)
+                self.navigationController?.pushViewController(svc, animated: true)
+            selectedCell?.backgroundColor = UIColor.white
+            selectedCell = cell
+    }
+    }
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 }
+

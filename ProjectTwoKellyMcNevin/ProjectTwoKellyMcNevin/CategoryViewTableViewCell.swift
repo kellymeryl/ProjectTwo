@@ -14,6 +14,13 @@ class CategoryViewTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryArticleTitle: UILabel!
     @IBOutlet weak var categoryArticleDescription: UITextView!
     
+    var categoryArticleImageViewURL: String?{
+        didSet{
+            categoryImage.setImageWithURL(urlString: categoryArticleImageViewURL)
+        }
+    }
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
