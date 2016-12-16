@@ -23,6 +23,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     var allArticles = [Article]()
     
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
     var sourcesArray = ["the-wall-street-journal", "business-insider", "the-economist", "cnn", "usa-today", "bloomberg-news", "financial-times"]
     
     let client = APIClient()
