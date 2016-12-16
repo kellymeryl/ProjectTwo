@@ -329,22 +329,15 @@
                                 </connections>
                             </tableView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUA-xL-bB1">
-                                <rect key="frame" x="0.0" y="474" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="410" width="375" height="216"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="2FP-i5-kwM"/>
-                                    <constraint firstAttribute="width" constant="375" id="K8r-YF-ZmX"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="0cB-le-7Nb" id="Lih-1D-Da6"/>
                                     <outlet property="delegate" destination="0cB-le-7Nb" id="z4M-pQ-qPX"/>
                                 </connections>
                             </pickerView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbp-fZ-lsT">
-                                <rect key="frame" x="0.0" y="427" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="Rdn-55-KEl"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="366" width="375" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="cancel" id="G4B-mo-cEU">
                                         <connections>
@@ -364,13 +357,12 @@
                         <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="F5R-0B-y3Q" firstAttribute="top" secondItem="rci-jK-124" secondAttribute="bottom" constant="56" id="1J7-ef-X59"/>
-                            <constraint firstAttribute="bottom" secondItem="kUA-xL-bB1" secondAttribute="bottom" constant="-8" id="1pj-vv-Rba"/>
+                            <constraint firstAttribute="bottom" secondItem="kUA-xL-bB1" secondAttribute="bottom" constant="56" id="1pj-vv-Rba"/>
                             <constraint firstAttribute="trailing" secondItem="kUA-xL-bB1" secondAttribute="trailing" id="KyI-mC-ch6"/>
-                            <constraint firstItem="kUA-xL-bB1" firstAttribute="top" secondItem="Bbp-fZ-lsT" secondAttribute="bottom" constant="3.5" id="M8w-Kx-xP9"/>
+                            <constraint firstItem="kUA-xL-bB1" firstAttribute="top" secondItem="Bbp-fZ-lsT" secondAttribute="bottom" id="M8w-Kx-xP9"/>
                             <constraint firstItem="F5R-0B-y3Q" firstAttribute="leading" secondItem="zUM-cK-2GP" secondAttribute="leading" id="OyN-Rv-VtS"/>
                             <constraint firstItem="kUA-xL-bB1" firstAttribute="leading" secondItem="zUM-cK-2GP" secondAttribute="leading" id="Sxd-da-21k"/>
                             <constraint firstAttribute="trailing" secondItem="F5R-0B-y3Q" secondAttribute="trailing" id="cpl-om-cX0"/>
-                            <constraint firstItem="kUA-xL-bB1" firstAttribute="top" secondItem="Bbp-fZ-lsT" secondAttribute="bottom" constant="3.5" id="eV0-Zc-EBs"/>
                             <constraint firstItem="Bbp-fZ-lsT" firstAttribute="leading" secondItem="zUM-cK-2GP" secondAttribute="leading" id="gWe-b3-nrO"/>
                             <constraint firstAttribute="trailing" secondItem="Bbp-fZ-lsT" secondAttribute="trailing" id="lZ9-ty-LZa"/>
                         </constraints>
@@ -406,7 +398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r2F-zg-KY7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1199.2" y="-449.32533733133437"/>
+            <point key="canvasLocation" x="-1199.2" y="-449.77511244377814"/>
         </scene>
         <!--SliderMenuViewController-->
         <scene sceneID="58m-6B-9Ko">

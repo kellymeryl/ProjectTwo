@@ -61,41 +61,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var selectedListIndex: Int?
     
-    //Filters the search bar
-/*    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        
-        if searchText != "" {
-            filteredResults = []
-            
-            for article in articles {
-                if article.title.contains(searchBar.text!) {
-                    filteredResults?.append(article)
-                }
-                
-                print(article)
-            }
-        }
-        else {
-            filteredResults = nil
-        }
-        
-        dataTableView.reloadData()
-        
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-       
-        self.searchBar.showsCancelButton = true
-        self.searchBar.becomeFirstResponder()
-    }
- 
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-    }
-    
-*/
     //Function that calls API based on selectedSource in slider menu
     func loadTableViewURLFromBar() {
         

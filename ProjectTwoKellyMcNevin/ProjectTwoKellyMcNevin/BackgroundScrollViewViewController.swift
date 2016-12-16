@@ -48,10 +48,17 @@ class BackgroundScrollViewViewController: UIViewController {
         
         if counter1 % 2 == 0{
             mainViewController?.categoryPickerView.isHidden = true
+            mainViewController?.toolBar.isHidden = true
+            mainViewController?.toolBar.isUserInteractionEnabled = false
+
                     }
         else if counter1 % 2 != 0 {
             mainViewController?.categoryPickerView.isHidden = false
+            mainViewController?.toolBar.isHidden = false
+            mainViewController?.toolBar.isUserInteractionEnabled = true
+
         }
+        
         
         counter1 += 1
         
