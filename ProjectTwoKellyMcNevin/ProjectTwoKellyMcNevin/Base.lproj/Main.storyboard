@@ -11,11 +11,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="ZOr-CJ-o4Y">
             <objects>
                 <navigationController id="Gnt-GH-vSI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="GZG-ez-Dnj"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="GZG-ez-Dnj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e6V-a0-L3D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

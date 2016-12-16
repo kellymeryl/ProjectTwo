@@ -40,7 +40,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var dataTableView: UITableView!
     
-    @IBOutlet weak var searchBar: UISearchBar!
+  //  @IBOutlet weak var searchBar: UISearchBar!
     
     var selectedSource: String = "the-wall-street-journal"
     //var sourcesArray = [String?]()
@@ -52,7 +52,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedListIndex: Int?
     
     //Filters the search bar
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+/*    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         
         if searchText != "" {
             filteredResults = []
@@ -85,7 +85,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchBar.resignFirstResponder()
     }
     
-
+*/
     //Function that calls API based on selectedSource in slider menu
     func loadTableViewURLFromBar() {
         
