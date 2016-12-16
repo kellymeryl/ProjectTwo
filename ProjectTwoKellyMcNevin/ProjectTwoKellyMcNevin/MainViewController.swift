@@ -38,6 +38,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         categoryPickerView.isHidden = true
     }
     
+    func setDateLabel() {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        let convertedDate = dateFormatter.string(from: date)
+        dateLabel.text = convertedDate
+    }
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
     
@@ -128,6 +135,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        setDateLabel()
+        
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
         categoryPickerView.isHidden = true
