@@ -12,6 +12,9 @@ class ExploreCategoriesViewController: UIViewController, UITableViewDataSource, 
 
     @IBOutlet weak var exploreTableView: UITableView!
     
+    var selectedCell: ExploreCategoriesTableViewCell?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -29,33 +32,26 @@ class ExploreCategoriesViewController: UIViewController, UITableViewDataSource, 
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreCategoriesTableViewCell", for: indexPath) as! ExploreCategoriesTableViewCell
         let category = Category.asArray()[indexPath.row].rawValue
-        cell.exploreCategoriesLabel = category
+        cell.exploreCategoriesLabel.text = category
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let category = Category.asArray()[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExploreCategoriesTableViewCell", for: indexPath) as! ExploreCategoriesTableViewCell
         
-        let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
-            print("Articles delivered to View Controller")
-            
-            if let filteredResults = self.filteredResults {
-                if let filteredArt = responseArticles {
-                    self.articles = filteredArt
-                    self.dataTableView.reloadData()
-                }
-            }
-            else {
-                if let art = responseArticles {
-                    self.articles = art
-                    self.dataTableView.reloadData()
-                }
-            }
-            
+        if cell === selectedCell {
+            cell.backgroundColor = UIColor.white
+            selectedCell = nil
         }
+        else {
+            cell.backgroundColor = UIColor.lightGray
+            selectedCell?.backgroundColor = UIColor.white
+            selectedCell = cell
+        }
+
     }
-    
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
