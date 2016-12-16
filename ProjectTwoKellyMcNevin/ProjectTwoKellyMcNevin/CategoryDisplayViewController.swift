@@ -8,20 +8,43 @@
 
 import UIKit
 
-class CategoryDisplayViewController: UIViewController {
+class CategoryDisplayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var categoryArticleTableView: UITableView!
     @IBOutlet weak var categoryTitleLabel: UILabel!
     
+    var selectedIndex: Int?
+    var articles = [Article]()
+    var selectedSource: CategoryViewTableViewCell?
+    var client = APIClient()
+    
+    func loadTableViewURLFromCategories() {
+        
+        let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
+            print("Articles delivered to View Controller")
+            
+            if let art = responseArticles {
+                self.articles = art
+                DispatchQueue.main.async {
+                    self.categoryArticleTableView.reloadData()
+                }
+            }
+        }
+        let category = Category.asArray()[selectedIndex!]
+        client.getData(category: category, completion: articleFetchCompletion)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        categoryTitleLabel.text = Category.asArray()[selectedIndex!].rawValue
+        loadTableViewURLFromCategories()
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

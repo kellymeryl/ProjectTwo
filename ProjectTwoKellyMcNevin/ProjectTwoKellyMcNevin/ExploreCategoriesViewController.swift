@@ -49,7 +49,11 @@ class ExploreCategoriesViewController: UIViewController, UITableViewDataSource, 
             selectedCell?.backgroundColor = UIColor.white
             selectedCell = cell
         }
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let CategoryDisplayViewController = segue.destination as! CategoryDisplayViewController
+        CategoryDisplayViewController.selectedIndex = exploreTableView.indexPathForSelectedRow?.row
     }
 
     
