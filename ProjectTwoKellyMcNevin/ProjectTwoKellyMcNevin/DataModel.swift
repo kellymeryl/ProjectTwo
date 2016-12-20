@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+//creates Article class
 class Article {
     
     var title: String
@@ -27,13 +29,16 @@ class Article {
     
 }
 
+//Creates News Source Class
 class NewsSourceTitle {
     var title: String
     
-    init(title: String){
+    init(title: String) {
         self.title = title
     }
 }
+
+//Creates array of titles for slider menu
 
 var arrayOfTitles: [NewsSourceTitle] = [
     NewsSourceTitle(title: "Financial Times"),
@@ -43,5 +48,5 @@ var arrayOfTitles: [NewsSourceTitle] = [
     NewsSourceTitle(title: "USA Today"),
     NewsSourceTitle(title: "CNN"),
     NewsSourceTitle(title: "The Wall Street Journal"),
-    NewsSourceTitle(title: "Search All")
 ]
+

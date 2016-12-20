@@ -12,109 +12,106 @@ import SafariServices
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var articles = [Article]()
+    var searchResults = [Article]()
+    var searchAllArticles = [Article]()
     var filteredResults: [Article]?
     
     var selectedIndex: Int?
     var articleTypeName: String?
+    var resultSearchController = UISearchController()
+    var selectedCell: DataTableViewCell?
+
+    var allArticles = [Article]()
+    
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    var sourcesArray = ["the-wall-street-journal", "business-insider", "the-economist", "cnn", "usa-today", "bloomberg-news", "financial-times"]
     
     let client = APIClient()
+
+    @IBOutlet weak var toolBar: UIToolbar!
+    
+    @IBAction func cancelButtonWasTapped(_ sender: Any) {
+        toolBar.isHidden = true
+        toolBar.isUserInteractionEnabled = false
+        categoryPickerView.isHidden = true
+    }
+    
+    func setDateLabel() {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        let convertedDate = dateFormatter.string(from: date)
+        dateLabel.text = convertedDate
+    }
     
     @IBOutlet weak var categoryPickerView: UIPickerView!
     
     @IBOutlet weak var dataTableView: UITableView!
     
-    @IBOutlet weak var searchBar: UISearchBar!
+  //  @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var spaceButton: UIBarButtonItem!
+    var selectedSource: String = "the-wall-street-journal"
+    //var sourcesArray = [String?]()
     
-    
-    @IBAction func doneButtonWasTapped(_ sender: Any) {
-        
-        categoryPickerView.isHidden = true
-        toolBar.isHidden = true
-        toolBar.isUserInteractionEnabled = false
-    }
-    
-    @IBAction func browseButtonWasTapped(_ sender: Any) {
-        categoryPickerView.isHidden = false
-        toolBar.isHidden = false
-        toolBar.isUserInteractionEnabled = true
-    }
+
     
     var pickerData = ["Business", "Entertainment", "Gaming", "General", "Music", "Science and Nature", "Sport", "Technology"]
     
-    var selectedCell: DataTableViewCell?
     var selectedListIndex: Int?
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        
-        if searchText != "" {
-            filteredResults = []
-            
-            for article in articles {
-                if article.title.contains(searchBar.text!) {
-                    filteredResults?.append(article)
-                }
-                
-                print(article)
-            }
-        }
-        else {
-            filteredResults = nil
-        }
-        
-        dataTableView.reloadData()
-        
-    }
-    
+    //Function that calls API based on selectedSource in slider menu
     func loadTableViewURLFromBar() {
         
+        //todo if selectedSource is source all SearchAll and use the same articleFetchCompletion
+        
         let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
             print("Articles delivered to View Controller")
             
-            if let art = responseArticles {
-                self.articles = art
-     //           self.dataTableView.reloadData()
-            }
-        }
-        client.getData(newsSource: articleTypeName!, category: .general, completion: articleFetchCompletion)
-        
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        self.categoryPickerView.dataSource = self
-        self.categoryPickerView.delegate = self
-        toolBar.isHidden = true
-        toolBar.isUserInteractionEnabled = false
-        categoryPickerView.isHidden = true
-    
-        let articleFetchCompletion: ([Article]?) -> () = { (responseArticles: [Article]?) in
-            print("Articles delivered to View Controller")
-            
-            if let filteredResults = self.filteredResults {
+            if self.filteredResults != nil {
                 if let filteredArt = responseArticles {
                     self.articles = filteredArt
                     self.dataTableView.reloadData()
                 }
             }
-            else {
-                if let art = responseArticles {
-                    self.articles = art
+            
+            if let art = responseArticles {
+                self.articles = art
+                DispatchQueue.main.async {
                     self.dataTableView.reloadData()
-                    print(self.dataTableView)
                 }
             }
-            
         }
-        client.getData(completion: articleFetchCompletion)
         
+    
+    if selectedSource == "search all" {
+            
+        client.searchAll(completion: articleFetchCompletion)
+ 
+    }
+    else {
+        client.getData(newsSource: selectedSource, category: .general, completion: articleFetchCompletion)
+        }
+    }
+
+    
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        setDateLabel()
+        
+        self.categoryPickerView.dataSource = self
+        self.categoryPickerView.delegate = self
+        categoryPickerView.isHidden = true
+        toolBar.isHidden = true
+        toolBar.isUserInteractionEnabled = false
+        
+        loadTableViewURLFromBar()
     }
     
+      //Implementing TABLE VIEW ------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if let filteredResults = filteredResults {
@@ -176,6 +173,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             selectedCell = cell
         }
     }
+    
     //IMPLEMENTING PICKER VIEW---------------------------------------------------------------------------
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -213,10 +211,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
         }
-        
-        
         client.getData(category: category, completion: articleFetchCompletion)
-        
     }
     
     override func didReceiveMemoryWarning() {

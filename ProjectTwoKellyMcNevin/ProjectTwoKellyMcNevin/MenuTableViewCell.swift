@@ -8,9 +8,10 @@
 
 import UIKit
 
-class SourceTitleTableViewCell: UITableViewCell {
+class MenuTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var sourceTitleLabel: UILabel!
+    
+    @IBOutlet weak var menuLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

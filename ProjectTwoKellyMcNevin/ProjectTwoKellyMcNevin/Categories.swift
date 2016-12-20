@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
-enum ArticleCategory: String{
+//News categories ------------------
+enum Category: String {
     
     case business = "business"
     case entertainment = "entertainment"
@@ -16,6 +18,66 @@ enum ArticleCategory: String{
     case general = "general"
     case music = "music"
     case scienceAndNature = "science-and-nature"
-    case sport = "sport"
-    case technolgy = "technology"
+    case technology = "technology"
+    
+    var displayValue: String {
+        switch self{
+        case .business :
+            return "Business"
+        case .entertainment:
+            return "Entertainment"
+        case .gaming:
+            return "Gaming"
+        case .general:
+            return "General"
+        case .music:
+            return "Music"
+        case .scienceAndNature:
+            return "Science And Nature"
+        case .technology:
+            return "Technology"
+        }
+    }
+    
+    
+    static func asArray() -> [Category] {
+        return [.business, .entertainment, .gaming, .general, .music, .scienceAndNature, .technology]
+    }
+}
+
+//News Sources ---------------
+enum Source: String {
+    
+    case financialTimes = "financial-times"
+    case bloombergNews = "bloomberg"
+    case theEconomist = "the-economist"
+    case businessInsider = "business-insider"
+    case usaToday = "usa-today"
+    case cnn = "cnn"
+    case wallStreetJournal = "the-wall-street-journal"
+    
+    var displayValue: String {
+        switch self{
+        case .financialTimes :
+            return "Financial Times"
+        case .bloombergNews:
+            return "Bloomberg News"
+        case .theEconomist:
+            return "The Economist"
+        case .businessInsider:
+            return "Business Insider"
+        case .usaToday:
+            return "USA Today"
+        case .cnn:
+            return "CNN"
+        case .wallStreetJournal:
+            return "The Wall Street Journal"
+            
+        }
+        
+    }
+    
+    static func asArray2() -> [Source] {
+        return [.financialTimes, .bloombergNews, .theEconomist, .businessInsider, .usaToday, .cnn, .wallStreetJournal]
+    }
 }

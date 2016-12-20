@@ -8,17 +8,34 @@
 
 import UIKit
 
-class SourceTitleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SliderMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var newsTitleTableView: UITableView!
         
-    var selectedCell: SourceTitleTableViewCell?
+    var selectedCell: MenuTableViewCell?
     var selectedListIndex: Int?
+    
+    var source: String?
+    var selectedSource: String?
+    
+
+    var sourcesArray = [String?]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         newsTitleTableView.reloadData()
     }
+    
+    //Search All Function
+    @IBAction func searchButtonWasTapped(_ sender: Any) {
+        selectedSource = "search all"
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
+    
+    }
+
+    
+//CREATE TABLE VIEW---------------------------------------------
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -27,19 +44,18 @@ class SourceTitleViewController: UIViewController, UITableViewDataSource, UITabl
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SourceTitleTableViewCell", for: indexPath) as! SourceTitleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         let titleName = arrayOfTitles[indexPath.row]
-        cell.sourceTitleLabel.text = titleName.title
+        cell.menuLabel.text = titleName.title
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath) as! SourceTitleTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
         let titleName = arrayOfTitles[indexPath.row]
         
-        let source = Source.asArray2()[indexPath.row].rawValue
-        print(source)
+        source = Source.asArray2()[indexPath.row].rawValue
         
         if cell === selectedCell {
             cell.backgroundColor = UIColor.white
@@ -56,26 +72,15 @@ class SourceTitleViewController: UIViewController, UITableViewDataSource, UITabl
             MainViewController.selectedIndex = newsTitleTableView.indexPathForSelectedRow?.row
         }
         
-        let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-
+        selectedSource = source
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "toggleMenu"), object: nil)
-
-        
-        mainViewController.articleTypeName = source
-        mainViewController.loadTableViewURLFromBar()
-        mainViewController.reloadInputViews()
 
         print(titleName.title)
        
-
     }
    
- 
-    
-    
-    override func didReceiveMemoryWarning() {
+     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
