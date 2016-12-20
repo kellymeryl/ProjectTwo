@@ -33,7 +33,7 @@ class Article {
 class NewsSourceTitle {
     var title: String
     
-    init(title: String){
+    init(title: String) {
         self.title = title
     }
 }
