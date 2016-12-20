@@ -39,6 +39,7 @@ class NewsSourceTitle {
 }
 
 //Creates array of titles for slider menu
+
 var arrayOfTitles: [NewsSourceTitle] = [
     NewsSourceTitle(title: "Financial Times"),
     NewsSourceTitle(title: "Bloomberg News"),
